@@ -1,0 +1,116 @@
+---
+title: "TD4 Problème d'estimation"
+format: html
+---
+
+# Estimation d'une proportion
+
+On prend un exemple simple : on veut estimer la proportion d'individu dans une population qui possède une caractéristique $A$ (par exemple un phénotype donné). Pour chaque individu de la population il possède la caractéristique $A$ ou ne la possède pas ($\bar{A}$). On note $p_A$ la proportion recherchée.
+
+La population totale n'est souvent pas observable, on tire un échantillon (en respectant un certain nombre de contraintes pour qu'il soit "représentatif").
+![Population et échantillon](image/schema1.png){fig-align="center" width="60%"}
+
+Et la proportion $p_A$ est alors estimée par $$p_A\simeq\frac{n_A}{n}.$$ Le problème est qu'à ce stade on ne connaît pas la précision de cette estimation.
+
+On peut utiliser un procédé générique pour estimer $p_A$
+
+::: callout-important
+## Principe de Monte Carlo
+
+On tire $B$ ($B=10000$ en général) échantillons de taille $n$ dans la population et pour chacun de ces $B$ échantillons on calcule la proportion d'individus possédant la caractérisque $A$, on note $\hat p^{(1)}_A,...\hat p^{(B)}_A$ les proportions obtenues.
+
+- Estimation de $p_A$ : $\hat p_A=\displaystyle{\frac{\hat p^{(1)}_A+...+\hat p^{(B)}_A}{B}}$.
+
+- Erreur d'estimation de $p_A$ : $\frac{1}{B-1} \sum\_{b=1}^B (\hat p^{(b)}_A-\hat p_A)^2$
+:::
+
+On va utiliser la loi binomiale $\mathcal B(n,p_A)$ 
+
+![Loi Binomiale pour $n=3$](image/arbre_binomial.png){fig-align="center" width="60%"}
+
+```{r}
+pA <- 0.3   # proportion vraie (dans la vraie vie, inconnue)
+n      <- 10  # taille d'échantillon
+B      <- 10000 # nombre de simulations
+
+# B échantillons → B proportions estimées
+pA_est <- rbinom(B, size = n, prob = pA) / n
+
+mean(pA_est)        
+var(pA_est)         
+```
+
+Répéter plusieurs fois cette expérience vous constaterez que l'on n'obtient pas toujours les mêmes estimations et erreurs d'estimation...
+C'est la fluctuation d'échantillonage....
+
+# Intervalle de confiance (IC) d'une proportion :
+
+Cette notion est difficile (car probabiliste). On va essayer de la comprendre sur des exemples. 
+On va répéter 100 fois l'expérience de Monte Carlo avec des échantillons de taille $n=50$. Une estimation d'un $IC$ à la confiance $\alpha$ est donnée par :
+$$\widehat{IC}_\alpha=[\hat q_{\alpha/2},\hat q_{1-\alpha/2}]$$ où $\hat q$ est le quantile empirique estimé par MC 
+
+```{r}
+set.seed(3344)
+# --- Paramètres ---
+p_A   <- 0.3   # vraie proportion
+n     <- 50    # taille d'échantillon
+N_rep <- 100   # nombre de répétitions
+B <- 10000
+alpha <- 0.1
+
+
+# --- Simulation ---
+
+resultats=data.frame(p_hat=rep(NA,N_rep),borne_inf=rep(NA,N_rep),borne_sup=rep(NA,N_rep))
+
+for(i in 1:N_rep){
+    p_hat<-rbinom(1, size = n, prob = p_A) / n
+    simu<-rbinom(B, size = n, prob = p_hat) / n
+    ic<-quantile(simu,probs=c(alpha/2,1-alpha/2))
+    resultats$p_hat[i]<-p_hat
+    resultats$borne_inf[i]<-ic[[1]]
+    resultats$borne_sup[i]<-ic[[2]]
+}
+
+resultats$contient <- resultats$borne_inf <= p_A & p_A <= resultats$borne_sup
+resultats$couleur  <- ifelse(resultats$contient, "#2ecc71", "#e74c3c")
+resultats$rep<-1:N_rep
+taux <- mean(resultats$contient)
+
+cat("Taux de couverture :", round(taux * 100, 1), "%\n")
+
+
+
+# Graphique 
+library(ggplot2)
+ggplot(resultats, aes(y = rep, color = contient)) +
+  geom_segment(aes(x = borne_inf, xend = borne_sup, yend = rep),
+               linewidth = 0.8) +
+  geom_point(aes(x = p_hat), size = 1.2) +
+  geom_vline(xintercept = p_A, linetype = "dashed",
+             color = "#2c3e50", linewidth = 0.9) +
+  annotate("text", x = p_A + 0.01, y = N_rep + 1.5,
+           label = paste0("p[A]==", p_A),
+           parse = TRUE, hjust = 0, size = 3.5, color = "#2c3e50") +
+  scale_color_manual(
+    values = c("TRUE" = "#2ecc71", "FALSE" = "#e74c3c"),
+    labels = c(
+      "TRUE"  = paste0("Contient p_A  (", sum( resultats$contient), "/100)"),
+      "FALSE" = paste0("Ne contient pas p_A  (", sum(!resultats$contient), "/100)")
+    )
+  ) +
+  scale_x_continuous(limits = c(max(0, p_A - 0.35), min(1, p_A + 0.35))) +
+  labs(
+    x     = expression(p[A]),
+    y     = "Répétition",
+    color = NULL,
+    title = paste0("100 IC à ",100*(1-alpha),"% par quantiles Monte Carlo  (B = ", B, ")"),
+    subtitle = paste0("Taux de couverture empirique : ", round(taux * 100, 1), "%")
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position  = "top",
+    panel.grid.minor = element_blank(),
+    plot.title       = element_text(face = "bold")
+  )
+```
