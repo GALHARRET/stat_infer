@@ -149,13 +149,14 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On tire <span class="math inline">\(B\)</span> (<span class="math inline">\(B=10000\)</span> en général) échantillons de taille <span class="math inline">\(n\)</span> dans la population et pour chacun de ces <span class="math inline">\(B\)</span> échantillons on calcule la proportion d’individus possédant la caractérisque <span class="math inline">\(A\)</span>, on note <span class="math inline">\(\hat p^{(1)}_A,...\hat p^{(B)}_A\)</span> les proportions obtenues.</p>
+<p>On tire <span class="math inline">\(B\)</span> (<span class="math inline">\(B=10000\)</span> en général) échantillons de taille <span class="math inline">\(n\)</span> dans la population en supposant connaitre le paramètre <span class="math inline">\(p_A\)</span> et pour chacun de ces <span class="math inline">\(B\)</span> échantillons on calcule la proportion d’individus possédant la caractérisque <span class="math inline">\(A\)</span>, on note <span class="math inline">\(\hat p^{(1)}_A,...\hat p^{(B)}_A\)</span> les proportions obtenues.</p>
 <ul>
 <li><p>Estimation de <span class="math inline">\(p_A\)</span> : <span class="math inline">\(\hat p_A=\displaystyle{\frac{\hat p^{(1)}_A+...+\hat p^{(B)}_A}{B}}\)</span>.</p></li>
 <li><p>Erreur d’estimation de <span class="math inline">\(p_A\)</span> : <span class="math inline">\(\frac{1}{B-1} \sum\_{b=1}^B (\hat p^{(b)}_A-\hat p_A)^2\)</span></p></li>
 </ul>
 </div>
 </div>
+<p>Le principe de Monte Carlo permet donc d’avoir une idée de l’estimation d’un paramètre</p>
 <p>On va utiliser la loi binomiale <span class="math inline">\(\mathcal B(n,p_A)\)</span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -164,6 +165,8 @@ window.Quarto = {
 </figure>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Voir le code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pA <span class="ot">&lt;-</span> <span class="fl">0.3</span>   <span class="co"># proportion vraie (dans la vraie vie, inconnue)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n      <span class="ot">&lt;-</span> <span class="dv">10</span>  <span class="co"># taille d'échantillon</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>B      <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># nombre de simulations</span></span>
@@ -172,21 +175,536 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>pA_est <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(B, <span class="at">size =</span> n, <span class="at">prob =</span> pA) <span class="sc">/</span> n</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(pA_est)        </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.30053</code></pre>
+<pre><code>[1] 0.29843</code></pre>
 </div>
+<details class="code-fold">
+<summary>Voir le code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(pA_est)         </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0217649</code></pre>
+<pre><code>[1] 0.02086262</code></pre>
 </div>
 </div>
 <p>Répéter plusieurs fois cette expérience vous constaterez que l’on n’obtient pas toujours les mêmes estimations et erreurs d’estimation… C’est la fluctuation d’échantillonage….</p>
 </section>
 <section id="intervalle-de-confiance-ic-dune-proportion" class="level1">
 <h1>Intervalle de confiance (IC) d’une proportion :</h1>
-<p>Cette notion est difficile (car probabiliste). On va essayer de la comprendre sur des exemples. On va répéter 100 fois l’expérience de Monte Carlo avec des échantillons de taille <span class="math inline">\(n=50\)</span>. Une estimation d’un <span class="math inline">\(IC\)</span> à la confiance <span class="math inline">\(\alpha\)</span> est donnée par : <span class="math display">\[\widehat{IC}_\alpha=[\hat q_{\alpha/2},\hat q_{1-\alpha/2}]\]</span> où <span class="math inline">\(\hat q\)</span> est le quantile empirique estimé par MC</p>
+<p>Cette notion est difficile (car probabiliste). On va essayer de la comprendre sur des exemples. On va utiliser une autre technique de simulation appelée le bootstrap paramétrique :</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Principe du bootstrap paramétrique
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On tire <span class="math inline">\(B\)</span> (<span class="math inline">\(B=10000\)</span> en général) échantillons de taille <span class="math inline">\(n\)</span> dans la population mais on ne connait pas le paramètre <span class="math inline">\(p_A\)</span>, donc il est estimé dans un premier temps. Ensuit le principe est le même : pour chacun de ces <span class="math inline">\(B\)</span> échantillons on calcule la proportion d’individus possédant la caractérisque <span class="math inline">\(A\)</span>, on note <span class="math inline">\(\hat p^{(1)}_A,...\hat p^{(B)}_A\)</span> les proportions obtenues.</p>
+<ul>
+<li><p>Estimation de <span class="math inline">\(p_A\)</span> : <span class="math inline">\(\hat p_A=\displaystyle{\frac{\hat p^{(1)}_A+...+\hat p^{(B)}_A}{B}}\)</span>.</p></li>
+<li><p>Erreur d’estimation de <span class="math inline">\(p_A\)</span> : <span class="math inline">\(\frac{1}{B-1} \sum\_{b=1}^B (\hat p^{(b)}_A-\hat p_A)^2\)</span></p></li>
+</ul>
+</div>
+</div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3344</span>)</span>
+<div class="cell-output-display">
+<div id="eqysypccpo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#eqysypccpo table {
+  font-family: 'Source Sans Pro', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#eqysypccpo thead, #eqysypccpo tbody, #eqysypccpo tfoot, #eqysypccpo tr, #eqysypccpo td, #eqysypccpo th {
+  border-style: none;
+}
+
+#eqysypccpo p {
+  margin: 0;
+  padding: 0;
+}
+
+#eqysypccpo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #2C3E50;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #2C3E50;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#eqysypccpo .gt_title {
+  color: #333333;
+  font-size: 14px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#eqysypccpo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#eqysypccpo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #2C3E50;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#eqysypccpo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#eqysypccpo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#eqysypccpo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#eqysypccpo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #2C3E50;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#eqysypccpo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#eqysypccpo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#eqysypccpo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#eqysypccpo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#eqysypccpo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#eqysypccpo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#eqysypccpo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eqysypccpo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#eqysypccpo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#eqysypccpo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#eqysypccpo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eqysypccpo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#eqysypccpo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eqysypccpo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#eqysypccpo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eqysypccpo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#eqysypccpo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eqysypccpo .gt_left {
+  text-align: left;
+}
+
+#eqysypccpo .gt_center {
+  text-align: center;
+}
+
+#eqysypccpo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#eqysypccpo .gt_font_normal {
+  font-weight: normal;
+}
+
+#eqysypccpo .gt_font_bold {
+  font-weight: bold;
+}
+
+#eqysypccpo .gt_font_italic {
+  font-style: italic;
+}
+
+#eqysypccpo .gt_super {
+  font-size: 65%;
+}
+
+#eqysypccpo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#eqysypccpo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#eqysypccpo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#eqysypccpo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#eqysypccpo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#eqysypccpo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#eqysypccpo .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#eqysypccpo .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#eqysypccpo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">Monte Carlo vs Bootstrap paramétrique</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Critère" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Critère</th>
+<th id="Monte-Carlo" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Monte Carlo</th>
+<th id="Bootstrap-paramétrique" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Bootstrap paramétrique</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Critère" style="font-weight: bold; background-color: #F0F0F0">On simule sous</td>
+<td class="gt_row gt_left" headers="Monte Carlo" style="background-color: #F0F0F0">la vraie loi (<span class="math inline">\(p_A\)</span> connu)</td>
+<td class="gt_row gt_left" headers="Bootstrap paramétrique" style="background-color: #F0F0F0">la loi estimée (<span class="math inline">\(\hat{p}_A\)</span> à la place de <span class="math inline">\(p_A\)</span>)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Critère" style="font-weight: bold">Usage</td>
+<td class="gt_row gt_left" headers="Monte Carlo">calcul théorique, calibration</td>
+<td class="gt_row gt_left" headers="Bootstrap paramétrique">inférence en pratique</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Critère" style="font-weight: bold; background-color: #F0F0F0">Biais</td>
+<td class="gt_row gt_left" headers="Monte Carlo" style="background-color: #F0F0F0">aucun (si loi bien spécifiée)</td>
+<td class="gt_row gt_left" headers="Bootstrap paramétrique" style="background-color: #F0F0F0">biais d’estimation en <span class="math inline">\(\hat{p}_A - p_A\)</span></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Critère" style="font-weight: bold">Hypothèse</td>
+<td class="gt_row gt_left" headers="Monte Carlo">forme <strong>et</strong> paramètre connus</td>
+<td class="gt_row gt_left" headers="Bootstrap paramétrique">forme connue, paramètre inconnu</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Une estimation d’un <span class="math inline">\(IC\)</span> à la confiance <span class="math inline">\(\alpha\)</span> est donnée par : <span class="math display">\[\widehat{IC}_\alpha=[\hat q_{\alpha/2},\hat q_{1-\alpha/2}]\]</span> où <span class="math inline">\(\hat q\)</span> est le quantile empirique estimé par boostrap paramétrique On va calculer le taux de couverture empirique qui est la proportion d’IC qui contiennent la vraie valeur du paramètre. Celui-ci doit être proche du taux nominal (c’est à dire <span class="math inline">\(1-\alpha\)</span>).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Voir le code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">15</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Paramètres ---</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p_A   <span class="ot">&lt;-</span> <span class="fl">0.3</span>   <span class="co"># vraie proportion</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>n     <span class="ot">&lt;-</span> <span class="dv">50</span>    <span class="co"># taille d'échantillon</span></span>
@@ -214,9 +732,12 @@ window.Quarto = {
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>taux <span class="ot">&lt;-</span> <span class="fu">mean</span>(resultats<span class="sc">$</span>contient)</span>
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Taux de couverture :"</span>, <span class="fu">round</span>(taux <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>), <span class="st">"%</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Taux de couverture : 97 %</code></pre>
+<pre><code>Taux de couverture : 93 %</code></pre>
 </div>
+<details class="code-fold">
+<summary>Voir le code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Graphique </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(resultats, <span class="fu">aes</span>(<span class="at">y =</span> rep, <span class="at">color =</span> contient)) <span class="sc">+</span></span>
@@ -249,11 +770,641 @@ window.Quarto = {
 <span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title       =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
 <span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="TD4_Statistiques_Inferentielles_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="TD4_Statistiques_Inferentielles_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
+</div>
+</div>
+</div>
+<p>Le taux de couverture dépend de <span class="math inline">\(n\)</span>, plus <span class="math inline">\(n\)</span> est grand plus le taux de couverture empirique va être proche de la valeur nominale.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Interprétation du niveau de confiance d’un IC
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Si on répète l’expérience un grand nombre de fois, environ 90% des IC obtenus contiendront <span class="math inline">\(p_A\)</span> (c’est ce qu’on voit sur l’illustration précédente).</p></li>
+<li><p>Pour un IC donné on ne sait pas si il contient ou pas la vraie valeur <span class="math inline">\(p_A\)</span> !!!! Si on n’a pas de chance on aura obtenu l’un des 7 intervalles qui ne le contient pas.</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercice 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Reprendre le code du bootstrap paramétrique en fixant <span class="math inline">\(Nrep=5000,B=5000,\alpha=0.05\)</span>.</p>
+<p>Calculer le taux de converture empirique en considérant :</p>
+<ul>
+<li><p><span class="math inline">\(n=10,100,200\)</span> et <span class="math inline">\(p_A=0.3\)</span>. Que constate t’on ?</p></li>
+<li><p><span class="math inline">\(n=100\)</span> et <span class="math inline">\(p_A=0.1,0.05,0.01\)</span>. Que constate t’on ?</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="estimation-de-la-moyenne-dune-population" class="level1">
+<h1>Estimation de la moyenne d’une population</h1>
+<p>On considère une population de rats de souche Whistar Kyoto. On voudrait estimer le poids moyen de cette population. On n’a pas d’idée sur la distribution des poids donc on commence par considérer que le poids est distribué uniformément entre 200g et 250g.</p>
+<p>On fait alors des simulations selon la méthode de Monte Carlo en supposant que l’on a des échantillons de <span class="math inline">\(n=30\)</span> rats.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Voir le code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3344</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>n      <span class="ot">&lt;-</span> <span class="dv">30</span>  <span class="co"># taille d'échantillon</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>B      <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># nombre de simulations</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>m<span class="ot">&lt;-</span><span class="dv">200</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>M<span class="ot">&lt;-</span><span class="dv">250</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>moy_est<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="cn">NA</span>,B)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># B échantillons → B proportions estimées</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(b <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>moy_est[b]<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">runif</span>(n,<span class="at">min=</span>m,<span class="at">max=</span>M))</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(moy_est), <span class="fu">aes</span>(<span class="at">x =</span> moy_est)) <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                 <span class="at">bins =</span> <span class="dv">50</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"#3498db"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"#e74c3c"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x     =</span> <span class="st">"Moyenne estimée"</span>,</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y     =</span> <span class="st">"Densité"</span>,</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution de la moyenne empirique"</span>,</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">bquote</span>(<span class="fu">U</span>(<span class="dv">200</span>, <span class="dv">250</span>) <span class="sc">~</span> <span class="st">","</span> <span class="sc">~</span> n <span class="sc">==</span> .(n) <span class="sc">~</span> <span class="st">","</span> <span class="sc">~</span> B <span class="sc">==</span> .(B))</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title    =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="TD4_Statistiques_Inferentielles_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ceci illustre un théorème fondamental de mathématiques (Théorème central limite)</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Théorème Central Limite
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On considère une variable <span class="math inline">\(X\)</span> de moyenne <span class="math inline">\(\mu\)</span> et d’écart type <span class="math inline">\(\sigma\)</span>. On note <span class="math inline">\(\bar X_n\)</span> la moyenne d’un échantillon de taille <span class="math inline">\(n\)</span>. Lorsque <span class="math inline">\(n\to \infty\)</span></p>
+<p><span class="math display">\[\sqrt{n}\times \frac{\bar X_n-\mu}{\sigma} \simeq \mathcal N(0,1).\]</span></p>
+</div>
+</div>
+<p>Reprenons l’exemple précédent on a supposé que le poids suivait une loi uniforme <span class="math inline">\(\mathcal U[m,M]\)</span>. La moyenne de cette loi est <span class="math inline">\(\mu=\frac{m+M}{2}=225\)</span> et l’écart type est <span class="math inline">\(\sigma=\frac{M-m}{\sqrt 12}=14.43\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Voir le code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mu<span class="ot">&lt;-</span>(m<span class="sc">+</span>M)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sig<span class="ot">&lt;-</span>(M<span class="sc">-</span>m)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">12</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>z_est<span class="ot">=</span><span class="fu">sqrt</span>(n)<span class="sc">*</span>(moy_est<span class="sc">-</span>mu)<span class="sc">/</span>sig</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(z_est), <span class="fu">aes</span>(<span class="at">x =</span> z_est)) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">bins =</span> <span class="dv">50</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"#3498db"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun  =</span> dnorm,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">"#e74c3c"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x        =</span> <span class="st">"Variable centrée réduite"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y        =</span> <span class="st">"Densité"</span>,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">"Distribution de la moyenne empirique standardisée"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">bquote</span>(<span class="fu">U</span>(.(m), .(M)) <span class="sc">~</span> <span class="st">","</span> <span class="sc">~</span> n <span class="sc">==</span> .(n) <span class="sc">~</span> <span class="st">","</span> <span class="sc">~</span> B <span class="sc">==</span> .(B))</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title       =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="TD4_Statistiques_Inferentielles_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>On a dessiné la loi normale centrée réduite et on constate que l’on est proche…</p>
+<p>Le problème c’est qu’un général on ne connait ni la loi, ni les paramètres de celle-ci …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="japeiqyvbv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#japeiqyvbv table {
+  font-family: 'Source Sans Pro', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#japeiqyvbv thead, #japeiqyvbv tbody, #japeiqyvbv tfoot, #japeiqyvbv tr, #japeiqyvbv td, #japeiqyvbv th {
+  border-style: none;
+}
+
+#japeiqyvbv p {
+  margin: 0;
+  padding: 0;
+}
+
+#japeiqyvbv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #2C3E50;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #2C3E50;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#japeiqyvbv .gt_title {
+  color: #333333;
+  font-size: 14px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#japeiqyvbv .gt_subtitle {
+  color: #333333;
+  font-size: 11px;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#japeiqyvbv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #2C3E50;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#japeiqyvbv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#japeiqyvbv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#japeiqyvbv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#japeiqyvbv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #2C3E50;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#japeiqyvbv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#japeiqyvbv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#japeiqyvbv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#japeiqyvbv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#japeiqyvbv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#japeiqyvbv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#japeiqyvbv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#japeiqyvbv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#japeiqyvbv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#japeiqyvbv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#japeiqyvbv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#japeiqyvbv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#japeiqyvbv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#japeiqyvbv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#japeiqyvbv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#japeiqyvbv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#japeiqyvbv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#japeiqyvbv .gt_left {
+  text-align: left;
+}
+
+#japeiqyvbv .gt_center {
+  text-align: center;
+}
+
+#japeiqyvbv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#japeiqyvbv .gt_font_normal {
+  font-weight: normal;
+}
+
+#japeiqyvbv .gt_font_bold {
+  font-weight: bold;
+}
+
+#japeiqyvbv .gt_font_italic {
+  font-style: italic;
+}
+
+#japeiqyvbv .gt_super {
+  font-size: 65%;
+}
+
+#japeiqyvbv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#japeiqyvbv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#japeiqyvbv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#japeiqyvbv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#japeiqyvbv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#japeiqyvbv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#japeiqyvbv .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#japeiqyvbv .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#japeiqyvbv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="4" class="gt_heading gt_title gt_font_normal">Distribution de la moyenne selon les hypothèses</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Trois situations selon le degré d'information disponible</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Cas" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Cas</th>
+<th id="Hypothèse" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Hypothèse</th>
+<th id="Méthode" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Méthode</th>
+<th id="Distribution-de-$\bar{X}_n$" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Distribution de $\bar{X}_n$</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Cas" style="font-weight: bold; background-color: #EAF4FB">Loi connue, paramètres estimés</td>
+<td class="gt_row gt_left" headers="Hypothèse" style="background-color: #EAF4FB">Forme connue, <span class="math inline">\(\hat\mu\)</span> et <span class="math inline">\(\hat\sigma\)</span></td>
+<td class="gt_row gt_left" headers="Méthode" style="background-color: #EAF4FB">TCL + plug-in</td>
+<td class="gt_row gt_left" headers="Distribution de $\bar{X}_n$" style="background-color: #EAF4FB"><span class="math inline">\(\sqrt{n}\times \frac{\bar X_n-\hat\mu}{\hat\sigma}\simeq\mathcal{N}(0,1)\)</span> asymptotique<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Cas" style="font-weight: bold; background-color: #EAFAF1">Gaussien, <span class="math inline">\(\sigma^2\)</span> inconnu</td>
+<td class="gt_row gt_left" headers="Hypothèse" style="background-color: #EAFAF1"><span class="math inline">\(X \sim \mathcal{N}(\mu, \sigma^2)\)</span></td>
+<td class="gt_row gt_left" headers="Méthode" style="background-color: #EAFAF1">Loi de Student</td>
+<td class="gt_row gt_left" headers="Distribution de $\bar{X}_n$" style="background-color: #EAFAF1"><span class="math inline">\(\sqrt{n}\times \frac{\bar X_n-\mu}{\hat\sigma}\sim t(n-1)\)</span> exact</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Cas" style="font-weight: bold; background-color: #FEF9E7">Loi complètement inconnue</td>
+<td class="gt_row gt_left" headers="Hypothèse" style="background-color: #FEF9E7">Aucune hypothèse sur la forme</td>
+<td class="gt_row gt_left" headers="Méthode" style="background-color: #FEF9E7">Bootstrap non-param.</td>
+<td class="gt_row gt_left" headers="Distribution de $\bar{X}_n$" style="background-color: #FEF9E7">Empirique (quantiles des rééchantillons)</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_footnotes odd">
+<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Valide asymptotiquement (n grand). Pour n petit, l'approximation peut être mauvaise.</td>
+</tr>
+</tfoot>
+
+</table>
+
 </div>
 </div>
 </div>
