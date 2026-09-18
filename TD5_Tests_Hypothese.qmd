@@ -1,0 +1,26 @@
+---
+title: "TD5 : Tests d'hypothèse"
+format:
+  html:
+    mathjax: true
+    code-fold: true
+    code-summary: "Voir le code"
+---
+
+# Introduction 
+
+Les tests d'hypothèse sont très utilisés dans les sciences biologiques et humaines. 
+
+
+Revenons à l'exemple du poids des agneaux à la naissance. On veut tester statistiquement si le poids moyen est significativement différent de 4 kg.
+On suppose connaitre l'écart type $\sigma=0.3$ 
+
+étape 1 : On va supposer que la moyenne n'est pas significativement différente de 4 (hypothèse nulle $H_0:\mu=4$). 
+
+étape 2 : On prélève un échantillon de taille $n$ et on calcule sa moyenne $\bar X_n$. On connait la distribution sous $H_0$ de $Z=\sqrt{n}\times \frac{\bar X_n-\mu}{\sigma}$, c'est une loi $\mathcal N(0,1)$.
+
+étape 3 : On calcule $p.value=\mathbb P(|Z|>z_{obs})$ où $z_{obs}$ est la valeur de $Z$ calculée sur l'échantillon observé. 
+
+étape 4 : On rejette l'hypothèse $H_0$ au risque $\alpha$ lorsque $$p.value<\alpha$$
+
+![test d'hypothèse](image/test_hypothese.png)

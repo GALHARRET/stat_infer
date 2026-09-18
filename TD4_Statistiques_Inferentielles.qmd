@@ -33,7 +33,7 @@ Le principe de Monte Carlo permet donc d'avoir une idée de l'estimation d'un pa
 
 On va utiliser la loi binomiale $\mathcal B(n,p_A)$ 
 
-![Loi Binomiale pour $n=3$](image/arbre_binomial.png){fig-align="center" width="60%"}
+![Loi Binomiale pour $n=3$](image/arbre_binomial.png){fig-align="center" width="100%"}
 
 ```{r}
 pA <- 0.3   # proportion vraie (dans la vraie vie, inconnue)
@@ -347,23 +347,136 @@ On suppose que les poids sont uniformément distribués et que les paramètres d
 
 ::: callout-note
 ## Exercice 2
-Estimer l'intervalle de confiance. (on pourra faire le graphique de la distribution des moyennes dans ce cas). 
+Estimer l'intervalle de confiance par la méthode de Monte Carlo (on pourra faire le graphique de la distribution des moyennes). 
 :::
+
+On obtient :
+
+```{r echo=F}
+library(ggplot2)
+data<-read.csv("data/poids_naissance.csv",sep=",",dec=".")
+x<-unlist(data)
+n<-length(x)
+set.seed(3344)
+m<-min(x)
+M<-max(x)
+alpha<-0.05
+moy_est<-rep(NA,B)
+# B échantillons → B proportions estimées
+for(b in 1:B){
+moy_est[b]<-mean(runif(n,min=m,max=M))
+}
+ic<-round(quantile(moy_est,probs=c(alpha/2,1-alpha/2)),2)
+ggplot(data.frame(moy_est), aes(x = moy_est)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 50,
+                 fill = "#3498db", color = "white", alpha = 0.7) +
+  labs(
+    x        = "Bootstrap non paramétrique",
+    y        = "Densité",
+    title    = "Distribution de la moyenne empirique par bootstrap non para.",
+    subtitle = paste("IC=[",ic[[1]],",",ic[[2]],"]",sep=""))+
+  theme_bw(base_size = 12) +
+  theme(
+    plot.title       = element_text(face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+```
 
 ### Deuxième approche on suppose que la loi est normale
 
 On suppose que les poids sont normalement distribués.
 
 ::: callout-note
-## Exercice 2
-Reprendre le code précédent pour estimer l'intervalle de confiance. (on pourra faire le graphique de la distribution des moyennes dans ce cas). 
+## Exercice 3
+Estimer l'intervalle de confiance par Bootstrap paramétrique (on fera le graphique de la distribution des moyennes). 
 :::
+
+On obtient :
+```{r echo=F}
+data<-read.csv("data/poids_naissance.csv",sep=",",dec=".")
+x<-unlist(data)
+n<-length(x)
+set.seed(3344)
+mu<-mean(x)
+sig<-sd(x)
+moy_est<-rep(NA,B)
+# B échantillons → B proportions estimées
+for(b in 1:B){
+moy_est[b]<-mean(rnorm(n,mu,sig))
+}
+ic<-round(quantile(moy_est,probs=c(alpha/2,1-alpha/2)),2)
+ggplot(data.frame(moy_est), aes(x = moy_est)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 50,
+                 fill = "#3498db", color = "white", alpha = 0.7) +
+  #stat_function(fun  = dnorm,
+  #              args = list(mean = 0, sd = 1),
+  #              color = "#e74c3c", linewidth = 1) +
+  labs(
+    x        = "Bootstrap non paramétrique",
+    y        = "Densité",
+    title    = "Distribution de la moyenne empirique par bootstrap  para.",
+    subtitle = paste("IC=[",ic[[1]],",",ic[[2]],"]",sep=""))+
+  theme_bw(base_size = 12) +
+  theme(
+    plot.title       = element_text(face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+```
+
+
 
 ### Troisième approche : bootstrap non paramétrique
 
+
+::: callout-important
+## Bootstrap non paramétrique
+On considère un échantillon de valeurs $x_1,...,x_n$ issue d'une variable aléatoire $X$ et on veut estimer la distribution de $\bar X_n$.
+
+Répéter $B$ fois les étapes ci-dessous :
+Etape 1 : On tire avec remise dans l'échantillon $x_1,...,x_n$, l'échantillon obtenu est noté $x^*_1,...,x^*_n$.
+Etape 2 : On calcule la moyenne $\bar X^*_n$ de l'échantillon obtenu.
+
+Les $B$ moyennes obtenues permettent d'obtenir une approximation de la distribution de $\bar X_n$.
+:::
+
+
+
 ```{r}
 data<-read.csv("data/poids_naissance.csv",sep=",",dec=".")
-poids<-unlist(data)
-length(poids)
+x<-unlist(data)
+n<-length(x)
+set.seed(3344)
+B<-5000
+moy_star<-rep(NA,B)
+for(b in 1:B){
+x_star<-x[sample(1:n,n,replace=T)]
+moy_star[b]<-mean(x_star)
+}
 
+```
+
+Reproduire le graphique ci-dessous :
+
+
+```{r echo=F}
+ic<-round(quantile(moy_star,probs=c(alpha/2,1-alpha/2)),2)
+ggplot(data.frame(moy_star), aes(x = moy_star)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 50,
+                 fill = "#3498db", color = "white", alpha = 0.7) +
+  #stat_function(fun  = dnorm,
+  #              args = list(mean = 0, sd = 1),
+  #              color = "#e74c3c", linewidth = 1) +
+  labs(
+    x        = "Bootstrap non paramétrique",
+    y        = "Densité",
+    title    = "Distribution de la moyenne empirique par bootstrap non para.",
+    subtitle = paste("IC=[",ic[[1]],",",ic[[2]],"]",sep=""))+
+  theme_bw(base_size = 12) +
+  theme(
+    plot.title       = element_text(face = "bold"),
+    panel.grid.minor = element_blank()
+  )
 ```
