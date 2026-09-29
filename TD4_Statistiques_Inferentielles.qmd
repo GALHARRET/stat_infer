@@ -337,7 +337,7 @@ tibble::tribble(
 
 ## Comparaison sur un exemple
 
-Charger le fichier [data]("data/poids_naissance.csv"). Il contient les poids (kg) à la naissance d'agneaux.
+Charger le fichier [data]("data/Agneaux.RData"). Il contient les poids (kg) à la naissance d'agneaux.
 
 On veut estimer le poids moyen d'un agneau à la naissance et un IC à 95% de cette moyenne.
 
@@ -354,8 +354,9 @@ On obtient :
 
 ```{r echo=F}
 library(ggplot2)
-data<-read.csv("data/poids_naissance.csv",sep=",",dec=".")
-x<-unlist(data)
+load("data/Agneaux.RData")
+
+x<-unlist(Agneaux$PN)
 n<-length(x)
 set.seed(3344)
 m<-min(x)

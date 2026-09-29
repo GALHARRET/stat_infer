@@ -1,7 +1,7 @@
 load("data/Agneaux.RData")
 Agneaux
 load("data/Veaux.RData")
-Veaux$
+
 # HSP signifie Hauteur Sacro-Pubienne. 
 # BIM : largeur bi-iliaque médiane.
 # LB : longueur du bassin

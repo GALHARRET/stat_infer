@@ -28,7 +28,8 @@ Revenons à l'exemple du poids des agneaux à la naissance. On veut tester stati
 On reprend les données concernant les agneaux, on commence toujours par une analyse descriptive des données :
 
 ```{r}
-data<-unlist(read.csv("data/poids_naissance.csv",sep=";",dec="."))
+load("data/Agneaux.RData")
+data<-unlist(Agneaux$PN)
 library(ggplot2)
 ggplot(data.frame(poids=data),aes(y=poids))+
   geom_boxplot()+
@@ -64,17 +65,107 @@ Lecture du résultat :
 
 # Test de comparaison de deux moyennes
 
+
 Il s'agit du test de Student. Il repose sur des hypothèses concernant la forme de la distributions des données :
 
 ::: callout-tip
 ## Test de Student
 
 On considère une caractéristique $X$ dont la distribution est connue sur deux poulations $A,B$ :$$X_A\sim \mathcal N(\mu_A,\sigma_A), \quad X_B\sim \mathcal N(\mu_B,\sigma_B).$$
+On veut tester l'hypothèse il n'existe pas de différence significative entre les deux moyennes c'est à dire : $$\mathcal H_0:\mu_A=\mu_B, \quad versus \quad \mathcal H_1:\mu_A\not =\mu_B.$$
 On a deux cas :
 
 - (Student classique) les variance $\sigma_A^2,\sigma^2_B$ sont inconnues mais supposées égales. On estime la variance commune $s_p^2=\frac{n_As^2_A+n_Bs^2_B}{n_A+n_B-2}$ et on a 
 $$T=\frac{\bar X_A-\bar X_B}{s_P\sqrt{\frac{1}{n_A}+\frac{1}{n_B}}}\sim t_{n_A+n_B-2}.$$
-- Welch les variance $\sigma_A^2,\sigma^2_B$ sont inconnues et inégales. On estime chaque variance et on a 
+- (Welch) les variance $\sigma_A^2,\sigma^2_B$ sont inconnues et inégales. On estime chaque variance et on a 
 $$T=\frac{\bar X_A-\bar X_B}{\sqrt{\frac{s^2_A}{n_A}+\frac{s^2_B}{n_B}}}\sim t_{\nu}.$$
+où $\vu$ est le degré de liberté calculé en fonction de $n_A,n_B$.
+
+Dans les deux cas on a $p.value=\mathbb P_{\mathcal H_0}(|T|>t_obs)$
 :::
+
+Reprenons le fichier Agneaux :
+
+::: callout-note
+
+On veut savoir si il existe une différence statistique entre les poids moyens des agneaux selon le sexe.
+On va tester l'hypothèse $H_0:\mu_F=\mu_M$.  
+
+:::
+
+Comme précédemment on commence par une analyse descriptive des données :
+
+- sous forme de graphiques :
+```{r}
+ggplot(Agneaux,aes(x=Sexe,y=PN))+
+  geom_boxplot()+
+  theme_bw()
+```
+
+
+-sous forme de tableau :
+
+```{r}
+library(dplyr)
+library(gt)
+Agneaux |>
+  group_by(Sexe) |>
+  summarise(M=mean(PN),SD=sd(PN))|>
+  gt() |>
+  fmt_number(
+    decimals = 2
+  )
+```
+
+On peut alors faire les deux versions du test de Student 
+
+```{r}
+t.test(PN~Sexe, data=Agneaux,var.equal=T)
+t.test(PN~Sexe, data=Agneaux)
+```
+
+Les résultats sont proches (car ....).
+
+On en déduit qu'au risque de 5% on ne peut pas rejeter l'hypothèse $H_0$. Donc il n'existe pas de différence significative de poids moyen des agneaux selon le sexe.
+
+
+<!-- ## Comparaison de $K \geq 2$ moyennes :
+
+On considère une caractéristique numérique $X$ et $A$ une caractéristique qualitative ayant $K$ modalités (c'est à dire définissant $K$ groupes). On note $\mu_i$ la moyenne de $X$ pour le groupe $i$.
+
+Ici on veut tester l'hypothèse $H_0:\mu_1=...=\mu_K=\mu$ où $\mu$ est la moyenne de $X$.
+On pourrait se dire que l'on peut faire des tests de Student pour tester les moyennes deux à deux mais c'est une mauvaise idée !
+Supposons pour simplifier que l'on teste $\mathcal H_0: \mu_1=\mu_2=\mu_3$. On a trois tests de Student à faire pour tester $\mathcal H_{01}: \mu_1=\mu_2$, $\mathcal H_{02}: \mu_1=\mu_3$ et $\mathcal H_{03}: \mu_2=\mu_3$.
+
+Supposons que l'h
+
+
+::: callout-tip
+## Test de Fisher
+Description du test pour des groupes équilibrés ($n_1=...=n_K=n$).
+
+On teste l'hypothèse $H_0:\mu_1=...=\mu_K=\mu$ où $\mu$ est la moyenne de $X$. L'hypothèse alternative est : "il existe au moins un groupe dont la moyenne est différente des autres".
+
+On calcule :
+
+- (Student classique) les variance $\sigma_A^2,\sigma^2_B$ sont inconnues mais supposées égales. On estime la variance commune $s_p^2=\frac{n_As^2_A+n_Bs^2_B}{n_A+n_B-2}$ et on a 
+$$T=\frac{\bar X_A-\bar X_B}{s_P\sqrt{\frac{1}{n_A}+\frac{1}{n_B}}}\sim t_{n_A+n_B-2}.$$
+- (Welch) les variance $\sigma_A^2,\sigma^2_B$ sont inconnues et inégales. On estime chaque variance et on a 
+$$T=\frac{\bar X_A-\bar X_B}{\sqrt{\frac{s^2_A}{n_A}+\frac{s^2_B}{n_B}}}\sim t_{\nu}.$$
+où $\vu$ est le degré de liberté calculé en fonction de $n_A,n_B$.
+
+Dans les deux cas on a $p.value=\mathbb P_{\mathcal H_0}(|T|>t_obs)$
+:::
+
+
+```{r}
+options(contrasts=c("contr.sum","contr.sum"))
+library(car)
+model<-lm(PN~ClasseGMQ3,data=Agneaux)
+coef(model)
+Anova(model,type="III")
+
+``` -->
+
+# Tests du $\chi^2$
 
