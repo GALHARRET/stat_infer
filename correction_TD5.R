@@ -15,3 +15,4 @@ table(Veaux$ModeVelage)
 (Agneaux$P2-Agneaux$P1)/20
 #  Gain Moyen Quotidien de poids de l'agneau entre son 30ème et son 70ème jour de vie GMQ3
 (Agneaux$P3-Agneaux$P2)/40
+

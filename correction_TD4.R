@@ -111,3 +111,5 @@ ggplot(data.frame(moy_est), aes(x = moy_est)) +
     plot.title    = element_text(face = "bold"),
     panel.grid.minor = element_blank()
   )
+
+
