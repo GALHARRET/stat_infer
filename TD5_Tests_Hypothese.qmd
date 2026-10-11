@@ -1,5 +1,5 @@
 ---
-title: "TD5 : Tests d'hypothèse"
+title: "TD5 à TD7 : Tests d'hypothèse"
 format:
   html:
     mathjax: true
@@ -222,14 +222,50 @@ On veut savoir si il existe un lien entre les caractéristiques physiques des ve
 
 # Tests du $\chi^2$
 
-## Test d'indépendance :
+## Test d'homogénéité
 
-On considère deux caractéristiques $X,Y$ qualitatives.
-On veut tester l'existence d'un lien statistique entre ces deux caractéristiques.
+Le test d'adéquation est similaire à un test sur une moyenne dans le sens où il ne concerne qu'une seule caractéristique qualitative. Il est souvent utilisé pour étudier la répartition des modalités  de cette caractéristique qualitative et en particulier, une des questions usuellement posée est l'homogénéité de la répartition des individus dans les différentes modalités.
+
+
+::: callout-tip
+## Test du $\chi^2$ d'homogénéité
+
+Soit $X$ une caractéristique qualitative dont les modalités sont notées $1, \dots, I$. On considère un échantillon de taille $n$ de valeurs de $X$.
+
+Soit $\hat p_1,\ldots,\hat p_I$ les proportions d'individus de l'échantillons appartenant aux différentes modalités $1,...,I$.
+
+Soit $(p_1^{(0)},...,p_I^{(0)})$ un vecteur de $I$ proportions.
+
+**Hypothèses**
+
+$$
+\begin{cases}
+H_0 : p_i = p_i^{(0)} \\
+H_1 : p_i \not= p_i^{(0)}
+\end{cases}
+$$
+
+
+**Statistique de test**
+
+$$
+\chi^2_{obs} = n \sum_{i=1}^{I} \frac{\left(p_{i} - p^{(0)}_{i}\right)^2}{p^{(0)}_{i}}
+$$
+
+Sous $H_0$, cette statistique suit approximativement une loi du $\chi^2$ à
+
+$$
+\nu = (I - 1) \text{ degrés de liberté.}
+$$
+
+**Règle de décision** (au risque $\alpha$)
+On rejette $H_0$ si $$p\text{-value} = P\left(\chi^2_{\nu} \geq \chi^2_{obs}\right)<\alpha$$
+:::
+
 
 ::: callout-note
 ## Exercice
-On veut savoir si il existe un lien entre la classe GMQ3 et le Sexe chez les Agneaux. 
+On veut savoir si pour les deux caractéristiques considérées la répartition est homogène. 
 :::
 
 On commence par une analyse descriptive univariée des données
@@ -274,6 +310,17 @@ ggplot(tab, aes(x = "", y = n, fill = Sexe)) +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 14))
 ```
 
+Dans le cas d'homogénéité on a $\p_F^{(0)}=\p_F^{(0)}=\frac 1{2}$.
+
+On fait le test sur R :
+
+```{r}
+obs<-table(Agneaux$Sexe)
+chisq.test(obs,p=c(1/2,1/2))
+```
+
+Pas de déviation significative de l'homogénéité ($\chi^2(1)= 0.24242,  p-value = 0.6225$).
+
 La variable ClasseGMQ3 est une caractéristique qualitative ordinale (les modalités peuvent être ordonnées) on utilisera plutôt un barplot :
 
 ```{r}
@@ -287,7 +334,7 @@ tab <- Agneaux |>
                    percent(pct, accuracy = 0.1, decimal.mark = ","))
   )
 
-# Diagramme circulaire
+# Diagramme en bâtons
 ggplot(tab, aes(x=ClasseGMQ3,y=n)) +
   geom_col(width = .5, color = "white") +
   #coord_polar(theta = "y", start = 0) +
@@ -300,8 +347,21 @@ ggplot(tab, aes(x=ClasseGMQ3,y=n)) +
    theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 14))
 ```
 
-Maintenant on va représenter le lien entre les deux variables :
-sous forme de tableaux :
+Dans le cas d'homogénéité on a $\p_1^{(0)}=\p_2^{(0)}=\p_3^{(0)}=\frac 1{3}$.
+
+On fait le test sur R :
+
+```{r}
+obs<-table(Agneaux$ClasseGMQ3)
+chisq.test(obs,p=c(1/3,1/3,1/3))
+```
+
+Pas de déviation significative de l'homogénéité ($\chi^2(1) = 0.27273, p-value = 0.8725$).
+
+## Test d'indépendance :
+
+On considère deux caractéristiques $X,Y$ qualitatives.
+On veut tester l'existence d'un lien statistique entre ces deux caractéristiques.
 
 ```{r}
 table(Agneaux$Sexe,Agneaux$ClasseGMQ3)
@@ -314,6 +374,14 @@ Agneaux |>
     percent = "column"
   )
 ```
+
+
+
+
+Maintenant on va représenter le lien entre les deux variables :
+sous forme de tableaux :
+
+
 
 
 ```{r}
@@ -347,7 +415,7 @@ ggplot(tab, aes(x = ClasseGMQ3, y = n, fill = Sexe)) +
 Pour tester le lien entre les deux caractéristiques on utilise :
 
 ::: callout-tip
-## Test du $\chi^2$ d'indépendance**
+## Test du $\chi^2$ d'indépendance
 
 Soient $X$ une variable à $I$ modalités $x_1, \dots, x_I$ et $Y$ une variable à $J$ modalités $y_1, \dots, y_J$, observées sur un échantillon de taille $n$.
 
@@ -395,10 +463,49 @@ Les effectifs théoriques doivent être suffisants : $E_{ij} \geq 5$ pour tout $
 :::
 
 ```{r}
-chisq.test(table(Agneaux$Sexe, Agneaux$ClasseGMQ3))
+obs<-table(Agneaux$Sexe, Agneaux$ClasseGMQ3)
+chisq.test(obs)
 fisher.test(table(Agneaux$Sexe, Agneaux$ClasseGMQ3),simulate.p.value = TRUE, B = 10000)
 ```
 
+## Exercice :
+
+Un cheval hirsute a un pelage anormalement long, épais et souvent bouclé, qui ne tombe pas correctement au printemps (défaut de mue).
+Les données sont dans ce fichier [Hirsutisme](data/Hirsutisme.RData).
+
+La caractéristique PUPD indique la présence ou l’absence de ce signe clinique chez chaque cheval ou poney :
+
+- OUI : le propriétaire ou le vétérinaire a observé que l’animal boit et urine anormalement beaucoup ;
+- NON : ce signe n’a pas été observé.
+
+
+### Répondre aux questions suivantes :
+
+Partie 1 :
+
+1. Peut-on penser que l'âge est différent entre les hirsutes et ceux ne l'étant pas ?
+
+2. Peut-on penser que plus la cortisol est élevée et plus l'insulinémie l'est également ?
+
+3. Peut-on penser que les boiteries sont plus présentes chez les individus hirsutes ?
+
+4. Peut-on penser que PUPD peut-être un indicateur de l'hirsutisme ?
+
+5. Tester si l'une des caractéristiques quantitatives est indicatrice de l'hirsutisme.
+
+
+
+Partie 2 :On se restreint aux individus hirsutes de l'échantillon.
+
+1. Peut-on penser que les chevaux sont significativement plus atteints d'hirsutisme que les poneys ?
+
+2. Peut-on penser que l'hirsutisme apparaît en moyenne avant 30 ans ?
+
+3. Peut-on penser que les chevaux déclarent l'hirsutisme avant les poneys ?
+
+4. Peut-on penser que chez hirsutes, plus l'on est âgé plus on a un taux de glycémie élevé ?
+
+5. Chez les hirsutes, peut-on penser que les variations de poids sont plus importantes chez les chevaux que chez les poneys ? 
 
 <!-- ## Comparaison de $K \geq 2$ moyennes :
 
