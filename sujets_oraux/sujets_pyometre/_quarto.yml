@@ -1,0 +1,26 @@
+project:
+  type: book
+
+book:
+  title: "Sujets pyométrie"
+  date: "Année Universitaire 2026-27"
+  chapters:
+    - index.qmd
+    - sujet1.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+execute:
+    echo: false
+    eval: false
+
+
+

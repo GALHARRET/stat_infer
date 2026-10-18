@@ -1,0 +1,22 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sujets pyométrie",
+    "section": "",
+    "text": "Preface\nCes données sont issues de la thèse d’exercice de Marie Le Coz sous la direction de Djemil Bencharif et soutenue en Septembre 2025. Le pyomètre est l’affection utérine la plus fréquente chez la chienne entière et constitue l’une des urgences reproductrices les plus couramment rencontrées en médecine vétérinaire. Elle nécessite une identification précoce du syndrome de réponse inflammatoire systémique (SIRS). L’analyse des indices hémato-biochimiques permet d’affiner le pronostic et d’adapter la prise en charge thérapeutique au sein des structures vétérinaires.\nLes données sont disponibles ici. Vous l’ouvrirez dans RStudio. L’attribution des sujets est disponible sur Connect. Les réponses seront présentées lors d’un oral dont l’organisation est donnée sur Connect.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "sujet1.html",
+    "href": "sujet1.html",
+    "title": "1  Sujet 1",
+    "section": "",
+    "text": "Peut on considérer que",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Sujet 1</span>"
+    ]
+  }
+]

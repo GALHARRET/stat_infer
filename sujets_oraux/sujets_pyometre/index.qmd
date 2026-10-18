@@ -1,0 +1,11 @@
+# Preface {.unnumbered}
+
+Ces données sont issues de la thèse d'exercice de Marie Le Coz sous la direction de Djemil Bencharif et soutenue en Septembre 2025. 
+Le pyomètre est l'affection utérine la plus fréquente chez la chienne entière et constitue l'une des urgences reproductrices les plus couramment rencontrées en médecine vétérinaire. Elle nécessite une identification précoce du syndrome de réponse inflammatoire systémique (SIRS). L'analyse des indices hémato-biochimiques permet d'affiner le pronostic et d'adapter la prise en charge thérapeutique au sein des structures vétérinaires.
+
+Les données sont disponibles [ici](chiens.csv). Vous l'ouvrirez dans RStudio.
+L'attribution des sujets est disponible sur Connect. 
+Les réponses seront présentées lors d'un oral dont l'organisation est donnée sur Connect.
+
+- La caractéristique polyurie / polydipsie (PUPD) correspond à un animal qui urine et boit anormalement beaucoup. Les deux modélités sont absence/ présence.
+
