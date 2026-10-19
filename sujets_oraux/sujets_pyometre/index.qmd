@@ -1,11 +1,40 @@
-# Preface {.unnumbered}
+# Contexte de l'étude {.unnumbered}
 
-Ces données sont issues de la thèse d'exercice de Marie Le Coz sous la direction de Djemil Bencharif et soutenue en Septembre 2025. 
-Le pyomètre est l'affection utérine la plus fréquente chez la chienne entière et constitue l'une des urgences reproductrices les plus couramment rencontrées en médecine vétérinaire. Elle nécessite une identification précoce du syndrome de réponse inflammatoire systémique (SIRS). L'analyse des indices hémato-biochimiques permet d'affiner le pronostic et d'adapter la prise en charge thérapeutique au sein des structures vétérinaires.
+Pour l'attribution des sujets et le calendrier de passage, voir sur connect.
 
-Les données sont disponibles [ici](chiens.csv). Vous l'ouvrirez dans RStudio.
-L'attribution des sujets est disponible sur Connect. 
-Les réponses seront présentées lors d'un oral dont l'organisation est donnée sur Connect.
+Le pyomètre se définit comme l’accumulation d’exsudat purulent dans l’utérus. Il s’agit de la pathologie de la reproduction la plus fréquente et l’une des urgences chez la chienne entière. 
 
-- La caractéristique polyurie / polydipsie (PUPD) correspond à un animal qui urine et boit anormalement beaucoup. Les deux modélités sont absence/ présence.
+Marie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemil Bencherif a fait une étude retrospective sur les 4 écoles vétérinaires françaises pour caractériser par des indices hémato-biochimiques comme diagnostic du SIRS.
+
+Le SIRS (Systemic Inflammatory Response Syndrome) est le syndrome de réponse inflammatoire systémique. Il désigne une réaction inflammatoire qui s’étend à tout l’organisme : il ne s’agit plus d’une inflammation localisée (dans l’utérus, par exemple), mais d’une réaction généralisée qui touche la température, le cœur, la respiration et les globules blancs. Chez la chienne atteinte de pyométrie, les toxines bactériennes d’E. coli passent dans le sang et peuvent déclencher un SIRS. C’est un marqueur de gravité.
+
+Extrait du dictionnaire des variables :
+
+- type : la chienne souffre de pyométrie (pyo) ou est dans le groupe témoin.
+
+- pathologie concomitante : la chienne a (n'a pas) de pathologie concomitante.
+
+- eg : caractérisation de l'état général (bon, abattement léger, abattement, decubitus).
+
+- tbdigestif : a (n'a pas) de trouble digestif.
+
+- pupd : veut dire polyurie / polydipsie, l’animal urine en quantité anormalement grande (PU) et il boit anormalement beaucoup (PD). Deux classes absence/présence.
+
+- muqueuse : examen de la muqueuese RH	(Roses humides, Normal), RS	(Roses sèches, Déshydratation), PS (Pâles sèches, Mauvaise perfusion ou anémie, avec déshydratation), CH (Congestionnées humides, Inflammation ou sepsis) CS (Congestionnées sèches, Sepsis avec déshydratation, l’état le plus sévère).
+
+- pa : pression artérielle
+
+- ht: taux d'hématocrite (pourcentage du volume sanguin occupé par les globules rouges).
+
+- pal phosphatases alcalines, une enzyme dosée dans la prise de sang (biochimie), exprimée en UI/L
+
+- alat : alanine aminotransférase, une enzyme du foie dosée en biochimie, exprimée en UI/L.
+
+- gr: nombre de globules rouges (érythrocytes)
+
+- hb : hémoglobine
+
+- gn : granulocytes neutrophiles. Ce sont les globules blancs les plus nombreux, la première ligne de défense contre les bactéries.
+
+- ge granulocytes éosinophiles, aussi appelés polynucléaires éosinophiles. Ce sont des globules blancs surtout impliqués dans les réactions allergiques et la lutte contre les parasites.
 
