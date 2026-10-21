@@ -481,9 +481,9 @@ La caractéristique PUPD indique la présence ou l’absence de ce signe cliniqu
 
 ### Répondre aux questions suivantes :
 
-Partie 1 :
+#### Partie 1 :
 
-1. Peut-on penser que l'âge est différent entre les hirsutes et ceux ne l'étant pas ?
+1. Peut-on penser que l'âge est différent selon le statut PUPD ?
 
 2. Peut-on penser que plus la cortisol est élevée et plus l'insulinémie l'est également ?
 
@@ -493,19 +493,26 @@ Partie 1 :
 
 5. Tester si l'une des caractéristiques quantitatives est indicatrice de l'hirsutisme.
 
+6. Existe-t-il un lien entre le statut PUPD et le statut polyghagie ?
+
+7. Existe-t-il un lien entre l'hyperhidrose et le statut PUPD ? de même avec le diagnostique.
 
 
-Partie 2 :On se restreint aux individus hirsutes de l'échantillon.
 
-1. Peut-on penser que les chevaux sont significativement plus atteints d'hirsutisme que les poneys ?
+#### Partie 2 :On se restreint aux individus hirsutes de l'échantillon.
 
-2. Peut-on penser que l'hirsutisme apparaît en moyenne avant 30 ans ?
+1. Peut-on penser que la proportion des chevaux et celle des poneys est la même chez les hirsutes ?
 
-3. Peut-on penser que les chevaux déclarent l'hirsutisme avant les poneys ?
+2. Peut-on penser que pour les hirsutes, le taux de glycémie moyen est supérieur à 1?
+
+3. Peut-on penser que, chez les hirsutes, les chevaux ont un taux de glycémie supérieur aux poneys ?
 
 4. Peut-on penser que chez hirsutes, plus l'on est âgé plus on a un taux de glycémie élevé ?
 
 5. Chez les hirsutes, peut-on penser que les variations de poids sont plus importantes chez les chevaux que chez les poneys ? 
+
+6. Chez les hirsutes, peut-on penser qu'il existe un lien entre le cortisol et l'insulinémie ?
+
 
 <!-- ## Comparaison de $K \geq 2$ moyennes :
 
