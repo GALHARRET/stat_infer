@@ -1,0 +1,23 @@
+project:
+  type: book
+
+book:
+  title: "Sujets Pyométrie"
+  author: "Cariou, V. Franchi, G. Galharret, J.-M. Mahieu, B."
+  date: "10/18/2026"
+  chapters:
+    - index.qmd
+    - sujet1.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+
+
