@@ -3,12 +3,12 @@
 Pour l'attribution des sujets et le calendrier de passage, voir sur connect.
 
 Le pyomètre se définit comme l’accumulation d’exsudat purulent dans l’utérus. Il s’agit de la pathologie de la reproduction la plus fréquente et l’une des urgences chez la chienne entière. 
+Le SIRS (Systemic Inflammatory Response Syndrome) est le syndrome de réponse inflammatoire systémique. Il désigne une réaction inflammatoire qui s’étend à tout l’organisme : il ne s’agit plus d’une inflammation localisée (dans l’utérus, par exemple), mais d’une réaction généralisée qui touche la température, le cœur, la respiration et les globules blancs. Chez la chienne atteinte de pyométrie, les toxines bactériennes d’E. coli passent dans le sang et peuvent déclencher un SIRS. C’est un marqueur de gravité.
 
 Marie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemil Bencherif a fait une étude retrospective sur les 4 écoles vétérinaires françaises pour caractériser par des indices hémato-biochimiques comme diagnostic du SIRS.
 
-Le SIRS (Systemic Inflammatory Response Syndrome) est le syndrome de réponse inflammatoire systémique. Il désigne une réaction inflammatoire qui s’étend à tout l’organisme : il ne s’agit plus d’une inflammation localisée (dans l’utérus, par exemple), mais d’une réaction généralisée qui touche la température, le cœur, la respiration et les globules blancs. Chez la chienne atteinte de pyométrie, les toxines bactériennes d’E. coli passent dans le sang et peuvent déclencher un SIRS. C’est un marqueur de gravité.
 
-Extrait du dictionnaire des variables :
+## Extrait du dictionnaire des variables :
 
 - type : la chienne souffre de pyométrie (pyo) ou est dans le groupe témoin.
 
@@ -22,7 +22,9 @@ Extrait du dictionnaire des variables :
 
 - muqueuse : examen de la muqueuese RH	(Roses humides, Normal), RS	(Roses sèches, Déshydratation), PS (Pâles sèches, Mauvaise perfusion ou anémie, avec déshydratation), CH (Congestionnées humides, Inflammation ou sepsis) CS (Congestionnées sèches, Sepsis avec déshydratation, l’état le plus sévère).
 
-- pa : pression artérielle
+- pa : pression artérielle.
+
+- fr : fréquence respiratoire.
 
 - ht: taux d'hématocrite (pourcentage du volume sanguin occupé par les globules rouges).
 

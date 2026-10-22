@@ -1,26 +1,31 @@
-#data<-read.csv("sujets_oraux/sujets_pyometre/chiens.csv",sep=";",dec=",")
-# data$pathologieconcomitante[data$pathologieconcomitante=="aucun"]<-"absence"
-# data$pathologieconcomitante[data$pathologieconcomitante!="absence"]<-"presence"
-# table(data$pathologieconcomitante)
-# data$eg<-as.factor(data$eg)
-# for(j in colnames(data)[c(2,3,4,7,10,12,13,15,16,17,19,20,23:24)]){
-#     data[,j]<-as.factor(data[,j])
-# }
-# summary(data)
-
-#save(data,file="sujets_oraux/sujets_pyometre/data.RData")
-load("sujets_oraux/sujets_pyometre/data.RData")
+data<-read.csv("chiens.csv",sep=";",dec=",",header=T)
+data$pathologieconcomitante[data$pathologieconcomitante=="aucun"]<-"absence"
+data$pathologieconcomitante[data$pathologieconcomitante!="absence"]<-"presence"
+data$PBcardiaque<-ifelse(data$auscultationcardiaque=="absence","absence","presence")
+data<-data[1:144,]
+for(j in c("type","eg","pathologieconcomitante",
+           "tbdigestif","pupd","PBcardiaque",
+           "muqueuse","palpation_abdo","ecoulement_vulvaire",
+          "liquide","epanchement","traitement")){
+     data[,j]<-as.factor(data[,j])
+ }
+ summary(data)
+View(data)
+colnames(data)
+data<-data[,-11]
 summary(data)
-obs<-table(data$pupd,data$ecoulement_vulvaire)
+save(data,file="data.RData")
+load("data.RData")
+obs<-table(data$pathologieconcomitante,data$type)
 obs
 fisher.test(obs)
-obs<-table(data$pupd,data$palpation_abdo)
+obs<-table(data$type,data$palpation_abdo)
 obs
 fisher.test(obs)
-obs<-table(data$pupd,data$auscultationcardiaque)
+obs<-table(data$type,data$PBcardiaque)
 obs
 fisher.test(obs)
-obs<-table(data$pupd,data$tbdigestif)
+obs<-table(data$type,data$tbdigestif)
 obs
 fisher.test(obs)
 obs<-table(data$type,data$pupd)
