@@ -1,6 +1,11 @@
 # Contexte de l'étude {.unnumbered}
 
+## Consignes 
+
 Pour l'attribution des sujets et le calendrier de passage, voir sur connect.
+L'évaluation comportera une présentation des résultats (entre 5 et 10 min) suivie d'un temps de question (5 min). 
+
+## Contexte 
 
 Le pyomètre se définit comme l’accumulation d’exsudat purulent dans l’utérus. Il s’agit de la pathologie de la reproduction la plus fréquente et l’une des urgences chez la chienne entière. 
 Le SIRS (Systemic Inflammatory Response Syndrome) est le syndrome de réponse inflammatoire systémique. Il désigne une réaction inflammatoire qui s’étend à tout l’organisme : il ne s’agit plus d’une inflammation localisée (dans l’utérus, par exemple), mais d’une réaction généralisée qui touche la température, le cœur, la respiration et les globules blancs. Chez la chienne atteinte de pyométrie, les toxines bactériennes d’E. coli passent dans le sang et peuvent déclencher un SIRS. C’est un marqueur de gravité.
@@ -10,7 +15,7 @@ Marie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemi
 
 ## Extrait du dictionnaire des variables :
 
-- type : la chienne souffre de pyométrie (pyo) ou est dans le groupe témoin.
+- type : la chienne souffre de pyométrie (pyo) ou non.
 
 - pathologie concomitante : la chienne a (n'a pas) de pathologie concomitante.
 
@@ -40,3 +45,4 @@ Marie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemi
 
 - ge granulocytes éosinophiles, aussi appelés polynucléaires éosinophiles. Ce sont des globules blancs surtout impliqués dans les réactions allergiques et la lutte contre les parasites.
 
+- sirs : 4 catégories (aucune, sepsis simple, sepsis sévère, choc septique).

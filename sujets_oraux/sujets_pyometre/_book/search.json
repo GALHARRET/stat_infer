@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Sujets Pyométrie",
     "section": "",
-    "text": "Contexte de l’étude\nPour l’attribution des sujets et le calendrier de passage, voir sur connect.\nLe pyomètre se définit comme l’accumulation d’exsudat purulent dans l’utérus. Il s’agit de la pathologie de la reproduction la plus fréquente et l’une des urgences chez la chienne entière.\nMarie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemil Bencherif a fait une étude retrospective sur les 4 écoles vétérinaires françaises pour caractériser par des indices hémato-biochimiques comme diagnostic du SIRS.\nLe SIRS (Systemic Inflammatory Response Syndrome) est le syndrome de réponse inflammatoire systémique. Il désigne une réaction inflammatoire qui s’étend à tout l’organisme : il ne s’agit plus d’une inflammation localisée (dans l’utérus, par exemple), mais d’une réaction généralisée qui touche la température, le cœur, la respiration et les globules blancs. Chez la chienne atteinte de pyométrie, les toxines bactériennes d’E. coli passent dans le sang et peuvent déclencher un SIRS. C’est un marqueur de gravité.\nExtrait du dictionnaire des variables :\n\ntype : la chienne souffre de pyométrie (pyo) ou est dans le groupe témoin.\npathologie concomitante : la chienne a (n’a pas) de pathologie concomitante.\neg : caractérisation de l’état général (bon, abattement léger, abattement, decubitus).\ntbdigestif : a (n’a pas) de trouble digestif.\npupd : veut dire polyurie / polydipsie, l’animal urine en quantité anormalement grande (PU) et il boit anormalement beaucoup (PD). Deux classes absence/présence.\nmuqueuse : examen de la muqueuese RH (Roses humides, Normal), RS (Roses sèches, Déshydratation), PS (Pâles sèches, Mauvaise perfusion ou anémie, avec déshydratation), CH (Congestionnées humides, Inflammation ou sepsis) CS (Congestionnées sèches, Sepsis avec déshydratation, l’état le plus sévère).\npa : pression artérielle\nht: taux d’hématocrite (pourcentage du volume sanguin occupé par les globules rouges).\npal phosphatases alcalines, une enzyme dosée dans la prise de sang (biochimie), exprimée en UI/L\nalat : alanine aminotransférase, une enzyme du foie dosée en biochimie, exprimée en UI/L.\ngr: nombre de globules rouges (érythrocytes)\nhb : hémoglobine\ngn : granulocytes neutrophiles. Ce sont les globules blancs les plus nombreux, la première ligne de défense contre les bactéries.\nge granulocytes éosinophiles, aussi appelés polynucléaires éosinophiles. Ce sont des globules blancs surtout impliqués dans les réactions allergiques et la lutte contre les parasites.",
+    "text": "Contexte de l’étude",
     "crumbs": [
       "Contexte de l'étude"
     ]
@@ -17,6 +17,36 @@
     "text": "Peut-on considérer qu’il existe une différence significative",
     "crumbs": [
       "Sujet 1"
+    ]
+  },
+  {
+    "objectID": "index.html#consignes",
+    "href": "index.html#consignes",
+    "title": "Sujets Pyométrie",
+    "section": "Consignes",
+    "text": "Consignes\nPour l’attribution des sujets et le calendrier de passage, voir sur connect. L’évaluation comportera une présentation",
+    "crumbs": [
+      "Contexte de l'étude"
+    ]
+  },
+  {
+    "objectID": "index.html#contexte",
+    "href": "index.html#contexte",
+    "title": "Sujets Pyométrie",
+    "section": "Contexte",
+    "text": "Contexte\nLe pyomètre se définit comme l’accumulation d’exsudat purulent dans l’utérus. Il s’agit de la pathologie de la reproduction la plus fréquente et l’une des urgences chez la chienne entière. Le SIRS (Systemic Inflammatory Response Syndrome) est le syndrome de réponse inflammatoire systémique. Il désigne une réaction inflammatoire qui s’étend à tout l’organisme : il ne s’agit plus d’une inflammation localisée (dans l’utérus, par exemple), mais d’une réaction généralisée qui touche la température, le cœur, la respiration et les globules blancs. Chez la chienne atteinte de pyométrie, les toxines bactériennes d’E. coli passent dans le sang et peuvent déclencher un SIRS. C’est un marqueur de gravité.\nMarie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemil Bencherif a fait une étude retrospective sur les 4 écoles vétérinaires françaises pour caractériser par des indices hémato-biochimiques comme diagnostic du SIRS.",
+    "crumbs": [
+      "Contexte de l'étude"
+    ]
+  },
+  {
+    "objectID": "index.html#extrait-du-dictionnaire-des-variables",
+    "href": "index.html#extrait-du-dictionnaire-des-variables",
+    "title": "Sujets Pyométrie",
+    "section": "Extrait du dictionnaire des variables :",
+    "text": "Extrait du dictionnaire des variables :\n\ntype : la chienne souffre de pyométrie (pyo) ou est dans le groupe témoin.\npathologie concomitante : la chienne a (n’a pas) de pathologie concomitante.\neg : caractérisation de l’état général (bon, abattement léger, abattement, decubitus).\ntbdigestif : a (n’a pas) de trouble digestif.\npupd : veut dire polyurie / polydipsie, l’animal urine en quantité anormalement grande (PU) et il boit anormalement beaucoup (PD). Deux classes absence/présence.\nmuqueuse : examen de la muqueuese RH (Roses humides, Normal), RS (Roses sèches, Déshydratation), PS (Pâles sèches, Mauvaise perfusion ou anémie, avec déshydratation), CH (Congestionnées humides, Inflammation ou sepsis) CS (Congestionnées sèches, Sepsis avec déshydratation, l’état le plus sévère).\npa : pression artérielle.\nfr : fréquence respiratoire.\nht: taux d’hématocrite (pourcentage du volume sanguin occupé par les globules rouges).\npal phosphatases alcalines, une enzyme dosée dans la prise de sang (biochimie), exprimée en UI/L\nalat : alanine aminotransférase, une enzyme du foie dosée en biochimie, exprimée en UI/L.\ngr: nombre de globules rouges (érythrocytes)\nhb : hémoglobine\ngn : granulocytes neutrophiles. Ce sont les globules blancs les plus nombreux, la première ligne de défense contre les bactéries.\nge granulocytes éosinophiles, aussi appelés polynucléaires éosinophiles. Ce sont des globules blancs surtout impliqués dans les réactions allergiques et la lutte contre les parasites.",
+    "crumbs": [
+      "Contexte de l'étude"
     ]
   }
 ]
