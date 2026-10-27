@@ -126,6 +126,30 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Sujet 1</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sujet2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sujet 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sujet3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sujet 3</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sujet4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sujet 4</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sujet5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sujet 4</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -140,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#consignes" id="toc-consignes" class="nav-link" data-scroll-target="#consignes">Consignes</a></li>
   <li><a href="#contexte" id="toc-contexte" class="nav-link" data-scroll-target="#contexte">Contexte</a></li>
-  <li><a href="#extrait-du-dictionnaire-des-variables" id="toc-extrait-du-dictionnaire-des-variables" class="nav-link" data-scroll-target="#extrait-du-dictionnaire-des-variables">Extrait du dictionnaire des variables :</a></li>
+  <li><a href="#dictionnaire-des-variables" id="toc-dictionnaire-des-variables" class="nav-link" data-scroll-target="#dictionnaire-des-variables">Dictionnaire des variables :</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -183,31 +207,43 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="unnumbered">Contexte de l’étude</h1>
 <section id="consignes" class="level2">
 <h2 class="anchored" data-anchor-id="consignes">Consignes</h2>
-<p>Pour l’attribution des sujets et le calendrier de passage, voir sur connect. L’évaluation comportera une présentation</p>
+<p>Pour l’attribution des sujets et le calendrier de passage, voir sur connect. L’évaluation comportera une présentation des résultats (entre 5 et 10 min) suivie d’un temps de question (5 min).</p>
 </section>
 <section id="contexte" class="level2">
 <h2 class="anchored" data-anchor-id="contexte">Contexte</h2>
 <p>Le pyomètre se définit comme l’accumulation d’exsudat purulent dans l’utérus. Il s’agit de la pathologie de la reproduction la plus fréquente et l’une des urgences chez la chienne entière. Le SIRS (Systemic Inflammatory Response Syndrome) est le syndrome de réponse inflammatoire systémique. Il désigne une réaction inflammatoire qui s’étend à tout l’organisme : il ne s’agit plus d’une inflammation localisée (dans l’utérus, par exemple), mais d’une réaction généralisée qui touche la température, le cœur, la respiration et les globules blancs. Chez la chienne atteinte de pyométrie, les toxines bactériennes d’E. coli passent dans le sang et peuvent déclencher un SIRS. C’est un marqueur de gravité.</p>
-<p>Marie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemil Bencherif a fait une étude retrospective sur les 4 écoles vétérinaires françaises pour caractériser par des indices hémato-biochimiques comme diagnostic du SIRS.</p>
+<p>Marie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemil Bencherif a fait une étude retrospective sur les 4 écoles vétérinaires françaises pour caractériser par des indices hémato-biochimiques comme diagnostic du SIRS. Les données fournies ont été simulées pour cette évaluation et sont disponibles <a href="pyometre_simule.RData">ici</a>. Cette base de données est nommée donnees.</p>
 </section>
-<section id="extrait-du-dictionnaire-des-variables" class="level2">
-<h2 class="anchored" data-anchor-id="extrait-du-dictionnaire-des-variables">Extrait du dictionnaire des variables :</h2>
+<section id="dictionnaire-des-variables" class="level2">
+<h2 class="anchored" data-anchor-id="dictionnaire-des-variables">Dictionnaire des variables :</h2>
 <ul>
-<li><p>type : la chienne souffre de pyométrie (pyo) ou est dans le groupe témoin.</p></li>
+<li><p>type : la chienne souffre de pyométrie (pyo) ou non.</p></li>
 <li><p>pathologie concomitante : la chienne a (n’a pas) de pathologie concomitante.</p></li>
 <li><p>eg : caractérisation de l’état général (bon, abattement léger, abattement, decubitus).</p></li>
 <li><p>tbdigestif : a (n’a pas) de trouble digestif.</p></li>
 <li><p>pupd : veut dire polyurie / polydipsie, l’animal urine en quantité anormalement grande (PU) et il boit anormalement beaucoup (PD). Deux classes absence/présence.</p></li>
 <li><p>muqueuse : examen de la muqueuese RH (Roses humides, Normal), RS (Roses sèches, Déshydratation), PS (Pâles sèches, Mauvaise perfusion ou anémie, avec déshydratation), CH (Congestionnées humides, Inflammation ou sepsis) CS (Congestionnées sèches, Sepsis avec déshydratation, l’état le plus sévère).</p></li>
-<li><p>pa : pression artérielle.</p></li>
-<li><p>fr : fréquence respiratoire.</p></li>
+<li><p>pa : pression artérielle (mmHg, millimètres de mercure).</p></li>
+<li><p>fr : fréquence respiratoire (mpm, mouvements respiratoires par minute).</p></li>
 <li><p>ht: taux d’hématocrite (pourcentage du volume sanguin occupé par les globules rouges).</p></li>
-<li><p>pal phosphatases alcalines, une enzyme dosée dans la prise de sang (biochimie), exprimée en UI/L</p></li>
+<li><p>pal : phosphatases alcalines, une enzyme dosée dans la prise de sang (biochimie), exprimée en UI/L</p></li>
 <li><p>alat : alanine aminotransférase, une enzyme du foie dosée en biochimie, exprimée en UI/L.</p></li>
-<li><p>gr: nombre de globules rouges (érythrocytes)</p></li>
-<li><p>hb : hémoglobine</p></li>
-<li><p>gn : granulocytes neutrophiles. Ce sont les globules blancs les plus nombreux, la première ligne de défense contre les bactéries.</p></li>
-<li><p>ge granulocytes éosinophiles, aussi appelés polynucléaires éosinophiles. Ce sont des globules blancs surtout impliqués dans les réactions allergiques et la lutte contre les parasites.</p></li>
+<li><p>gr: nombre de globules rouges (érythrocytes) exprimé en 10⁶/µL.</p></li>
+<li><p>hb : hémoglobine (g/dL)</p></li>
+<li><p>gn : granulocytes neutrophiles (10³/µL).</p></li>
+<li><p>ge granulocytes éosinophiles (10³/µL).</p></li>
+<li><p>sirs : 4 catégories (aucune, sepsis simple, sepsis sévère, choc septique).</p></li>
+<li><p>albumine (g/L)</p></li>
+<li><p>globuline (g/L)</p></li>
+<li><p>proteinetotale (g/L) Somme de l’albumine et de la globuline</p></li>
+<li><p>glucose (g/L)</p></li>
+<li><p>uree (g/L)</p></li>
+<li><p>creat (µmol/L) créatinine</p></li>
+<li><p>lymphocyte (10³/µL)</p></li>
+<li><p>monocyte (10³/µL)</p></li>
+<li><p>gb (10³/µL) Basophiles</p></li>
+<li><p>globuleblanc (10³/µL) Somme gn + lymphocyte + monocyte + ge + gb</p></li>
+<li><p>plaquette (10³/µL)</p></li>
 </ul>
 
 

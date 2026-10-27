@@ -1,9 +1,38 @@
 # Sujet 1 {.unnumbered}
 
-```{r}
+## Consignes :
 
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+obs<-table(donnees$type,donnees$sirs)
+obs
+chisq.test(obs)
+
+t.test(ht~type,data=donnees)
+
+mod<-lm(pa~fr+albumine+plaquette,data=donnees)
+summary(mod)
+
+obs<-table(donnees[donnees$type=="pyo","pathologie_concomitante"])
+
+chisq.test(obs,p=c(2/3,1/3))
 ```
 
-1. Peut-on considérer qu'il existe une différence significative   
+1. La répartition du statut SIRS diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ? 
+
+2. Le taux d'hématocrite est-il significativement lié au fait d'être atteinte de pyométrie ?
+
+3. Peut-on prédire la pression artérielle à partir de marqueurs de gravité tels que fréquence respiratoire, albumine et plaquette ?
+
+4. Parmi les chiennes pyo, y a-t-il deux fois plus de chiennes sans pathologie concomitante que avec ?
 
  

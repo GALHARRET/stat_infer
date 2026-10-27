@@ -1,0 +1,34 @@
+# Sujet 3 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(log(pal)~pupd,data=donnees)
+
+mod<-lm(log(pal)~globuline+monocyte+gn,data=donnees)
+summary(mod)
+
+obs<-table(donnees$type,donnees$muqueuse)
+obs
+chisq.test(obs)
+
+t.test(log(pal)~pathologie_concomitante,data=donnees[donnees$type=="pyo",])
+```
+
+1. Existe-t-il une différence de phosphatases alcalines (exprimée en logarithme) entre les chiennes ayant un pupd et celles n'en ayant pas ? 
+
+2. Le logarithme de phosphatases alcalines peut-il être prédit  par les variables globuline, monocyte et granulocytes neutrophiles ?
+
+3. La répartition du statut des muqueuses diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ? 
+
+4. Pour les chiennes pyo, peut-on penser qu'il existe une différence significative du logarithme de phosphatases alcalines selon le fait d'avoir une pathologie concomitante ?
+ 

@@ -8,6 +8,10 @@ book:
   chapters:
     - index.qmd
     - sujet1.qmd
+    - sujet2.qmd
+    - sujet3.qmd
+    - sujet4.qmd
+    - sujet5.qmd
 
 bibliography: references.bib
 

@@ -50,9 +50,6 @@ obs<-table(donnees$type,donnees$muqueuse)
 obs
 fisher.test(obs)
 
-obs<-table(donnees$type,donnees$sirs)
-obs
-fisher.test(obs)
 
 obs<-table(donnees$sirs,donnees$pathologie_concomitante)
 obs
@@ -98,3 +95,4 @@ cor.test(donnees$uree,donnees$creat)
 
 res<-lm(albumine~sirs,data=donnees)
 car::Anova(res,type="III")
+

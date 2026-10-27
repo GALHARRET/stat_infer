@@ -10,10 +10,10 @@ L'évaluation comportera une présentation des résultats (entre 5 et 10 min) su
 Le pyomètre se définit comme l’accumulation d’exsudat purulent dans l’utérus. Il s’agit de la pathologie de la reproduction la plus fréquente et l’une des urgences chez la chienne entière. 
 Le SIRS (Systemic Inflammatory Response Syndrome) est le syndrome de réponse inflammatoire systémique. Il désigne une réaction inflammatoire qui s’étend à tout l’organisme : il ne s’agit plus d’une inflammation localisée (dans l’utérus, par exemple), mais d’une réaction généralisée qui touche la température, le cœur, la respiration et les globules blancs. Chez la chienne atteinte de pyométrie, les toxines bactériennes d’E. coli passent dans le sang et peuvent déclencher un SIRS. C’est un marqueur de gravité.
 
-Marie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemil Bencherif a fait une étude retrospective sur les 4 écoles vétérinaires françaises pour caractériser par des indices hémato-biochimiques comme diagnostic du SIRS.
+Marie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemil Bencherif a fait une étude retrospective sur les 4 écoles vétérinaires françaises pour caractériser par des indices hémato-biochimiques comme diagnostic du SIRS. Les données fournies ont été simulées pour cette évaluation et sont disponibles [ici](pyometre_simule.RData). Cette base de données est nommée donnees.
 
 
-## Extrait du dictionnaire des variables :
+## Dictionnaire des variables :
 
 - type : la chienne souffre de pyométrie (pyo) ou non.
 
@@ -27,22 +27,44 @@ Marie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemi
 
 - muqueuse : examen de la muqueuese RH	(Roses humides, Normal), RS	(Roses sèches, Déshydratation), PS (Pâles sèches, Mauvaise perfusion ou anémie, avec déshydratation), CH (Congestionnées humides, Inflammation ou sepsis) CS (Congestionnées sèches, Sepsis avec déshydratation, l’état le plus sévère).
 
-- pa : pression artérielle.
+- pa : pression artérielle (mmHg, millimètres de mercure).
 
-- fr : fréquence respiratoire.
+- fr : fréquence respiratoire (mpm, mouvements respiratoires par minute).
 
 - ht: taux d'hématocrite (pourcentage du volume sanguin occupé par les globules rouges).
 
-- pal phosphatases alcalines, une enzyme dosée dans la prise de sang (biochimie), exprimée en UI/L
+- pal : phosphatases alcalines, une enzyme dosée dans la prise de sang (biochimie), exprimée en UI/L
 
 - alat : alanine aminotransférase, une enzyme du foie dosée en biochimie, exprimée en UI/L.
 
-- gr: nombre de globules rouges (érythrocytes)
+- gr: nombre de globules rouges (érythrocytes) exprimé en 10⁶/µL.
 
-- hb : hémoglobine
+- hb : hémoglobine (g/dL)
 
-- gn : granulocytes neutrophiles. Ce sont les globules blancs les plus nombreux, la première ligne de défense contre les bactéries.
+- gn : granulocytes neutrophiles (10³/µL).
 
-- ge granulocytes éosinophiles, aussi appelés polynucléaires éosinophiles. Ce sont des globules blancs surtout impliqués dans les réactions allergiques et la lutte contre les parasites.
+- ge granulocytes éosinophiles (10³/µL).
 
 - sirs : 4 catégories (aucune, sepsis simple, sepsis sévère, choc septique).
+
+- albumine	(g/L)	
+
+- globuline	(g/L)	
+
+- proteinetotale (g/L) Somme de l’albumine et de la globuline
+
+- glucose	(g/L)
+
+- uree (g/L)
+
+- creat	(µmol/L) créatinine
+
+- lymphocyte	(10³/µL)	
+
+- monocyte (10³/µL)
+
+- gb (10³/µL) Basophiles 
+
+- globuleblanc	(10³/µL) Somme gn + lymphocyte + monocyte + ge + gb
+
+- plaquette	(10³/µL)

@@ -1,0 +1,39 @@
+# Sujet 2 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~fr,data=donnees)
+summary(mod)
+
+mod<-lm(pa~sirs,data=donnees)
+car::Anova(mod,type="III")
+
+obs<-table(donnees[donnees$pupd=="presence","type"])
+
+chisq.test(obs,p=c(1/4,3/4))
+
+obs<-table(donnees$tbdigestif,donnees$pupd)
+obs
+chisq.test(obs)
+
+```
+
+1. Existe-t-il un lien significatif entre la pression artérielle et la fréquence de respiration ? 
+
+2. La pression artérielle est-elle significativement différente selon le statut SIRS ?
+
+3. Pour les chiennes ayant une présence de polyurie / polydipsie (pupd), peut-on penser qu'il a 3 fois plus de chiennes pyo ?
+
+4. La répartition du statut SIRS diffère-t-elle significativement selon que la chienne est atteinte ou non de polyurie / polydipsie (pupd)? 
+
+ 

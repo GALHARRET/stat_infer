@@ -1,0 +1,34 @@
+# Sujet 4 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(plaquette~sirs,data=donnees)
+summary(mod)
+
+mod<-lm(plaquette~pa,data=donnees)
+summary(mod)
+
+obs<-table(donnees$sirs,donnees$pathologie_concomitante)
+obs
+chisq.test(obs)
+t.test(plaquette~type,data=donnees[donnees$sirs=="choc septique",])
+```
+
+1. Existe-t-il une différence de plaquette selon le statut sirs ? 
+
+2. Existe-t-il un lien significatif entre la pression artérielle et la quantité de plaquettes ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon la présence ou pas d'une pathologie concomitante ? 
+
+4. Pour les chiennes ayant un choc septique pour le statut sirs, peut-on penser qu'il existe une différence significative au niveau de la quantité de plaquettes entre les chiennes pyo et les autres ?
+ 

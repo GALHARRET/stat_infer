@@ -1,0 +1,37 @@
+# Sujet 5 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(plaquette ~ pa  + lymphocyte + gn,data=donnees)
+summary(mod)
+
+t.test(plaquette~type,data=donnees)
+
+obs<-table(donnees$type,donnees$pathologie_concomitante)
+obs
+chisq.test(obs)
+
+obs<-table(donnees[donnees$type=="pyo","eg"])
+
+chisq.test(obs)
+```
+
+1. Peut-on prédire la quantité de plaquettes à partir de la pression artérielle du nombre de lymphocytes et du nombre de granulocytes neutrophiles ? 
+
+2. Pour les chiennes pyo, peut-on penser qu'il existe une différence de répartition selon l'état général ?
+
+3. Existe-t-il un lien significatif entre la quantité de plaquettes et la pyométrie de la chienne ?
+
+4. La répartition du statut pyométrique diffère-t-elle significativement selon la présence ou pas d'une pathologie concomitante ? 
+
+ 
