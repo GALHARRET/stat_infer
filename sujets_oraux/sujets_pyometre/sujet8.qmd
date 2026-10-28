@@ -1,0 +1,33 @@
+# Sujet 8 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(log(uree)~pupd,data=donnees)
+
+mod<-lm(albumine~pa,data=donnees)
+summary(mod)
+
+obs<-table(donnees$type,donnees$eg)
+obs
+chisq.test(obs)
+
+t.test(glucose~pathologie_concomitante,data=donnees[donnees$type=="non_pyo",])
+```
+
+1. Existe-t-il une différence significative du logarithme de l'urémie entre les chiennes présentant une polyurie-polydipsie et les autres ?
+
+2. Existe-t-il un lien significatif entre l'albuminémie et la pression artérielle ?
+
+3. La répartition de l'état général diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes non pyo, existe-t-il une différence significative de glycémie selon la présence d'une pathologie concomitante ?

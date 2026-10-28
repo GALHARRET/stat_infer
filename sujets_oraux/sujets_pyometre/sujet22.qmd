@@ -1,0 +1,35 @@
+# Sujet 22 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(pal)~sirs,data=donnees)
+car::Anova(mod)
+
+mod<-lm(plaquette~albumine,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$pathologie_concomitante=="oui",]
+obs<-table(sub$type,sub$pupd)
+obs
+chisq.test(obs)
+
+t.test(lymphocyte~pathologie_concomitante,data=donnees[donnees$type=="pyo",])
+```
+
+1. Existe-t-il une différence significative du logarithme des phosphatases alcalines selon le statut sirs ?
+
+2. Existe-t-il un lien significatif entre la quantité de plaquettes et l'albuminémie ?
+
+3. Pour les chiennes présentant une pathologie concomitante, la présence d'une polyurie-polydipsie se répartit-elle différemment selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes pyo, peut-on penser qu'il existe une différence significative de la quantité de lymphocytes selon la présence d'une pathologie concomitante ?

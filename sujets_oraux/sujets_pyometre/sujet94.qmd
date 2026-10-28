@@ -1,0 +1,34 @@
+# Sujet 94 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(pal)~sirs,data=donnees)
+car::Anova(mod)
+
+mod<-lm(albumine~globuline,data=donnees)
+summary(mod)
+
+obs<-table(donnees$sirs,donnees$tbdigestif)
+obs
+chisq.test(obs)
+
+t.test(ht~type,data=donnees[donnees$sirs=="absence",])
+```
+
+1. Existe-t-il une différence significative du logarithme des phosphatases alcalines selon le statut sirs ?
+
+2. Existe-t-il un lien significatif entre l'albuminémie et la globulinémie ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes ne présentant pas de sirs, existe-t-il une différence significative d'hématocrite entre les chiennes pyo et les autres ?

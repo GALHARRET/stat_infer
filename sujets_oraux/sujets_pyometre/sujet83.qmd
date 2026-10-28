@@ -1,0 +1,34 @@
+# Sujet 83 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~muqueuse,data=donnees)
+car::Anova(mod)
+
+mod<-lm(albumine~pa,data=donnees)
+summary(mod)
+
+obs<-table(donnees$pathologie_concomitante,donnees$muqueuse)
+obs
+chisq.test(obs)
+
+t.test(log(pal)~type,data=donnees[donnees$sirs=="sepsis severe",])
+```
+
+1. Existe-t-il une différence significative de pression artérielle selon le statut des muqueuses ?
+
+2. Existe-t-il un lien significatif entre l'albuminémie et la pression artérielle ?
+
+3. La répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Pour les chiennes en sepsis sévère, existe-t-il une différence significative du logarithme des phosphatases alcalines entre les chiennes pyo et les autres ?

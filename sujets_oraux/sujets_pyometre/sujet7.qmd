@@ -1,0 +1,36 @@
+# Sujet 7 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(ht~muqueuse,data=donnees)
+car::Anova(mod)
+
+mod<-lm(pa~fr+albumine+plaquette+glucose,data=donnees)
+summary(mod)
+
+obs<-table(donnees$sirs,donnees$tbdigestif)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$sirs=="choc septique","type"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative d'hématocrite selon le statut des muqueuses ?
+
+2. La pression artérielle peut-elle être prédite par la fréquence respiratoire, l'albuminémie, la quantité de plaquettes et la glycémie ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Parmi les chiennes en choc septique, peut-on considérer qu'il y a autant de chiennes pyo que de chiennes non pyo ?

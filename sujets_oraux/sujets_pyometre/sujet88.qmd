@@ -1,0 +1,35 @@
+# Sujet 88 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(albumine~muqueuse,data=donnees)
+car::Anova(mod)
+
+mod<-lm(fr~albumine+lymphocyte+plaquette,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$type=="pyo",]
+obs<-table(sub$tbdigestif,sub$muqueuse)
+obs
+chisq.test(obs)
+
+t.test(glucose~type,data=donnees[donnees$sirs=="sepsis severe",])
+```
+
+1. Existe-t-il une différence significative d'albuminémie selon le statut des muqueuses ?
+
+2. La fréquence respiratoire peut-elle être prédite par l'albuminémie, la quantité de lymphocytes et la quantité de plaquettes ?
+
+3. Pour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes en sepsis sévère, existe-t-il une différence significative de glycémie entre les chiennes pyo et les autres ?

@@ -1,0 +1,37 @@
+# Sujet 49 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~eg,data=donnees)
+car::Anova(mod)
+
+mod<-lm(plaquette~albumine,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$type=="pyo",]
+obs<-table(sub$pathologie_concomitante,sub$sirs)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$eg=="decubitus","sirs"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative de pression artérielle selon l'état général ?
+
+2. Existe-t-il un lien significatif entre la quantité de plaquettes et l'albuminémie ?
+
+3. Pour les chiennes pyo, la répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Parmi les chiennes en décubitus, peut-on considérer que les quatre statuts sirs sont représentés de façon équilibrée ?

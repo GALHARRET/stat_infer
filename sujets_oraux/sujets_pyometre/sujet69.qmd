@@ -1,0 +1,33 @@
+# Sujet 69 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(log(alat)~type,data=donnees)
+
+mod<-lm(monocyte~globuline,data=donnees)
+summary(mod)
+
+obs<-table(donnees$type,donnees$pathologie_concomitante)
+obs
+chisq.test(obs)
+
+t.test(glucose~type,data=donnees[donnees$sirs=="sepsis severe",])
+```
+
+1. Existe-t-il une différence significative du logarithme de l'ALAT entre les chiennes atteintes de pyométrie et les autres ?
+
+2. Existe-t-il un lien significatif entre la quantité de monocytes et la globulinémie ?
+
+3. La présence d'une pathologie concomitante se répartit-elle différemment selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes en sepsis sévère, existe-t-il une différence significative de glycémie entre les chiennes pyo et les autres ?

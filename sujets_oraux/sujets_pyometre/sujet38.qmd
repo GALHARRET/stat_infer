@@ -1,0 +1,33 @@
+# Sujet 38 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(albumine~pupd,data=donnees)
+
+mod<-lm(lymphocyte~pa+fr,data=donnees)
+summary(mod)
+
+obs<-table(donnees$tbdigestif,donnees$muqueuse)
+obs
+chisq.test(obs)
+
+t.test(pa~tbdigestif,data=donnees[donnees$type=="pyo",])
+```
+
+1. Existe-t-il une différence significative d'albuminémie entre les chiennes présentant une polyurie-polydipsie et les autres ?
+
+2. La quantité de lymphocytes peut-elle être prédite par la pression artérielle et la fréquence respiratoire ?
+
+3. La répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes pyo, peut-on penser qu'il existe une différence significative de pression artérielle selon la présence d'un trouble digestif ?

@@ -1,0 +1,33 @@
+# Sujet 48 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(pa~type,data=donnees)
+
+mod<-lm(ht~albumine+uree+globuline,data=donnees)
+summary(mod)
+
+obs<-table(donnees$tbdigestif,donnees$pupd)
+obs
+chisq.test(obs)
+
+t.test(log(pal)~type,data=donnees[donnees$sirs=="sepsis severe",])
+```
+
+1. Existe-t-il une différence significative de pression artérielle entre les chiennes atteintes de pyométrie et les autres ?
+
+2. L'hématocrite peut-il être prédit par l'albuminémie, l'urémie et la globulinémie ?
+
+3. La présence d'une polyurie-polydipsie se répartit-elle différemment selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes en sepsis sévère, existe-t-il une différence significative du logarithme des phosphatases alcalines entre les chiennes pyo et les autres ?

@@ -1,0 +1,35 @@
+# Sujet 66 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(albumine~muqueuse,data=donnees)
+car::Anova(mod)
+
+mod<-lm(pa~albumine+plaquette,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$sirs!="absence",]
+obs<-table(sub$pupd,sub$type)
+obs
+chisq.test(obs)
+
+t.test(log(alat)~pupd,data=donnees[donnees$type=="non_pyo",])
+```
+
+1. Existe-t-il une différence significative d'albuminémie selon le statut des muqueuses ?
+
+2. La pression artérielle peut-elle être prédite par l'albuminémie et la quantité de plaquettes ?
+
+3. Pour les chiennes présentant un sirs (quel que soit son stade), la présence d'une polyurie-polydipsie se répartit-elle différemment selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes non pyo, existe-t-il une différence significative du logarithme de l'ALAT selon la présence d'une polyurie-polydipsie ?

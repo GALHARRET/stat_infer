@@ -1,0 +1,36 @@
+# Sujet 32 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(monocyte~sirs,data=donnees)
+car::Anova(mod)
+
+mod<-lm(log(creat)~log(uree),data=donnees)
+summary(mod)
+
+obs<-table(donnees$type,donnees$pathologie_concomitante)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="pyo","pupd"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative de la quantité de monocytes selon le statut sirs ?
+
+2. Existe-t-il un lien significatif entre le logarithme de la créatininémie et le logarithme de l'urémie ?
+
+3. La présence d'une pathologie concomitante se répartit-elle différemment selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes pyo, peut-on considérer qu'il y a autant de chiennes avec que sans polyurie-polydipsie ?

@@ -12,23 +12,24 @@
 ```{r echo=F, eval=F}
 load("pyometre_simule.RData")
 
-mod<-lm(plaquette ~ pa  + lymphocyte + gn,data=donnees)
+mod<-lm(globuleblanc~sirs,data=donnees)
+car::Anova(mod)
+
+mod<-lm(globuleblanc ~ uree,data=donnees)
 summary(mod)
 
-t.test(plaquette~type,data=donnees)
-
-obs<-table(donnees$type,donnees$pathologie_concomitante)
-obs
-chisq.test(obs)
-
-obs<-table(donnees[donnees$type=="pyo","eg"])
+obs<-table(donnees$type,donnees$muqueuse)
 
 chisq.test(obs)
+
+obs<-table(donnees[donnees$muqueuse=="CS","type"])
+chisq.test(obs)
+
 ```
 
-1. Peut-on prédire la quantité de plaquettes à partir de la pression artérielle du nombre de lymphocytes et du nombre de granulocytes neutrophiles ? 
+1. Existe-t-il une différence significative de la quantité de globules blancs selon le statut sirs ?
 
-2. Pour les chiennes pyo, peut-on penser qu'il existe une différence de répartition selon l'état général ?
+2. Existe-t-il un lien significatif entre la quantité de globules blancs et l'urémie ?
 
 3. Existe-t-il un lien significatif entre la quantité de plaquettes et la pyométrie de la chienne ?
 

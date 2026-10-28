@@ -1,0 +1,35 @@
+# Sujet 44 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(fr~type,data=donnees)
+
+mod<-lm(log(creat)~log(uree)+pa,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$type=="pyo",]
+obs<-table(sub$pupd,sub$sirs)
+obs
+chisq.test(obs)
+
+mod<-lm(albumine~sirs,data=donnees[donnees$type=="pyo",])
+car::Anova(mod)
+```
+
+1. Existe-t-il une différence significative de fréquence respiratoire entre les chiennes atteintes de pyométrie et les autres ?
+
+2. Le logarithme de la créatininémie peut-il être prédit par le logarithme de l'urémie et la pression artérielle ?
+
+3. Pour les chiennes pyo, la répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Pour les chiennes pyo, existe-t-il une différence significative d'albuminémie selon le statut sirs ?

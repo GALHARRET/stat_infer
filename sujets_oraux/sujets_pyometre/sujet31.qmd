@@ -1,0 +1,37 @@
+# Sujet 31 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(ht~sirs,data=donnees)
+car::Anova(mod)
+
+mod<-lm(plaquette~fr,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$pathologie_concomitante=="non",]
+obs<-table(sub$type,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$sirs=="choc septique","type"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative d'hématocrite selon le statut sirs ?
+
+2. Existe-t-il un lien significatif entre la quantité de plaquettes et la fréquence respiratoire ?
+
+3. Pour les chiennes sans pathologie concomitante, la répartition du statut des muqueuses diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Parmi les chiennes en choc septique, peut-on considérer qu'il y a autant de chiennes pyo que de chiennes non pyo ?

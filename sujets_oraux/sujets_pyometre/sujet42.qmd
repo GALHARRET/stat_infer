@@ -1,0 +1,36 @@
+# Sujet 42 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(log(creat)~pupd,data=donnees)
+
+mod<-lm(pa~fr+glucose,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$sirs!="absence",]
+obs<-table(sub$pupd,sub$type)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="non_pyo","tbdigestif"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative du logarithme de la créatininémie entre les chiennes présentant une polyurie-polydipsie et les autres ?
+
+2. La pression artérielle peut-elle être prédite par la fréquence respiratoire et la glycémie ?
+
+3. Pour les chiennes présentant un sirs (quel que soit son stade), la présence d'une polyurie-polydipsie se répartit-elle différemment selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes non pyo, peut-on considérer qu'il y a autant de chiennes avec que sans trouble digestif ?

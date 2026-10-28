@@ -1,0 +1,34 @@
+# Sujet 68 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(log(uree)~type,data=donnees)
+
+mod<-lm(lymphocyte~fr,data=donnees)
+summary(mod)
+
+obs<-table(donnees$pathologie_concomitante,donnees$eg)
+obs
+chisq.test(obs)
+
+mod<-lm(ht~sirs,data=donnees[donnees$type=="pyo",])
+car::Anova(mod)
+```
+
+1. Existe-t-il une différence significative du logarithme de l'urémie entre les chiennes atteintes de pyométrie et les autres ?
+
+2. Existe-t-il un lien significatif entre la quantité de lymphocytes et la fréquence respiratoire ?
+
+3. La répartition de l'état général diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Pour les chiennes pyo, existe-t-il une différence significative d'hématocrite selon le statut sirs ?

@@ -1,0 +1,36 @@
+# Sujet 16 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(log(gn)~type,data=donnees)
+
+mod<-lm(albumine~pa+lymphocyte+globuline+ht,data=donnees)
+summary(mod)
+
+obs<-table(donnees$pathologie_concomitante,donnees$muqueuse)
+obs
+chisq.test(obs)
+
+sub<-donnees[donnees$type=="pyo",]
+obs<-table(sub$pupd,sub$tbdigestif)
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative du logarithme de la quantité de granulocytes neutrophiles entre les chiennes atteintes de pyométrie et les autres ?
+
+2. L'albuminémie peut-elle être prédite par la pression artérielle, la quantité de lymphocytes, la globulinémie et l'hématocrite ?
+
+3. La répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Pour les chiennes pyo, la présence d'un trouble digestif se répartit-elle différemment selon la présence d'une polyurie-polydipsie ?

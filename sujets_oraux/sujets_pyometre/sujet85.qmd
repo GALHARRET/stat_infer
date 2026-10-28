@@ -1,0 +1,35 @@
+# Sujet 85 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(log(gn)~type,data=donnees)
+
+mod<-lm(creat~uree+ht+albumine,data=donnees)
+summary(mod)
+
+obs<-table(donnees$type,donnees$sirs)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="non_pyo","tbdigestif"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative du logarithme de la quantité de granulocytes neutrophiles entre les chiennes atteintes de pyométrie et les autres ?
+
+2. La créatininémie peut-elle être prédite par l'urémie, l'hématocrite et l'albuminémie ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes non pyo, peut-on considérer qu'il y a autant de chiennes avec que sans trouble digestif ?

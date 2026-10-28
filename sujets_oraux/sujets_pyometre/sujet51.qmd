@@ -1,0 +1,33 @@
+# Sujet 51 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(log(uree)~pupd,data=donnees)
+
+mod<-lm(log(pal)~log(alat)+globuline+monocyte+gn,data=donnees)
+summary(mod)
+
+obs<-table(donnees$sirs,donnees$tbdigestif)
+obs
+chisq.test(obs)
+
+t.test(albumine~type,data=donnees[donnees$eg=="bon",])
+```
+
+1. Existe-t-il une différence significative du logarithme de l'urémie entre les chiennes présentant une polyurie-polydipsie et les autres ?
+
+2. Le logarithme des phosphatases alcalines peut-il être prédit par le logarithme de l'ALAT, la globulinémie, la quantité de monocytes et celle de granulocytes neutrophiles ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes en bon état général, existe-t-il une différence significative d'albuminémie entre les chiennes pyo et les autres ?

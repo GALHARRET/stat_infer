@@ -1,0 +1,34 @@
+# Sujet 12 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(fr~eg,data=donnees)
+car::Anova(mod)
+
+mod<-lm(ht~albumine+uree+globuline,data=donnees)
+summary(mod)
+
+obs<-table(donnees$pupd,donnees$sirs)
+obs
+chisq.test(obs)
+
+t.test(ht~pupd,data=donnees[donnees$type=="pyo",])
+```
+
+1. Existe-t-il une différence significative de fréquence respiratoire selon l'état général ?
+
+2. L'hématocrite peut-il être prédit par l'albuminémie, l'urémie et la globulinémie ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Pour les chiennes pyo, peut-on penser qu'il existe une différence significative d'hématocrite selon la présence d'une polyurie-polydipsie ?

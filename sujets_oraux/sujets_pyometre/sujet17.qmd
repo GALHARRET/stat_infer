@@ -1,0 +1,33 @@
+# Sujet 17 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(proteinetotale~type,data=donnees)
+
+mod<-lm(glucose~pa,data=donnees)
+summary(mod)
+
+obs<-table(donnees$type,donnees$sirs)
+obs
+chisq.test(obs)
+
+t.test(plaquette~pathologie_concomitante,data=donnees[donnees$sirs!="absence",])
+```
+
+1. Existe-t-il une différence significative de protéinémie totale entre les chiennes atteintes de pyométrie et les autres ?
+
+2. Existe-t-il un lien significatif entre la glycémie et la pression artérielle ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes présentant un sirs (quel que soit son stade), existe-t-il une différence significative de la quantité de plaquettes selon la présence d'une pathologie concomitante ?

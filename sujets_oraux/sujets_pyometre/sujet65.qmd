@@ -1,0 +1,35 @@
+# Sujet 65 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(lymphocyte~pupd,data=donnees)
+
+mod<-lm(glucose~plaquette,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$pupd=="presence",]
+obs<-table(sub$type,sub$tbdigestif)
+obs
+chisq.test(obs)
+
+mod<-lm(pa~muqueuse,data=donnees[donnees$type=="pyo",])
+car::Anova(mod)
+```
+
+1. Existe-t-il une différence significative de la quantité de lymphocytes entre les chiennes présentant une polyurie-polydipsie et les autres ?
+
+2. Existe-t-il un lien significatif entre la glycémie et la quantité de plaquettes ?
+
+3. Pour les chiennes présentant une polyurie-polydipsie, la présence d'un trouble digestif se répartit-elle différemment selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes pyo, existe-t-il une différence significative de pression artérielle selon le statut des muqueuses ?

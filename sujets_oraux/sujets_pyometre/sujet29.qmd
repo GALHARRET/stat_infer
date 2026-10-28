@@ -1,0 +1,36 @@
+# Sujet 29 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(plaquette~pathologie_concomitante,data=donnees)
+
+mod<-lm(glucose~albumine+plaquette,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$type=="pyo",]
+obs<-table(sub$tbdigestif,sub$eg)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="non_pyo","tbdigestif"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative de la quantité de plaquettes entre les chiennes présentant une pathologie concomitante et les autres ?
+
+2. La glycémie peut-elle être prédite par l'albuminémie et la quantité de plaquettes ?
+
+3. Pour les chiennes pyo, la répartition de l'état général diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes non pyo, peut-on considérer qu'il y a autant de chiennes avec que sans trouble digestif ?

@@ -1,0 +1,37 @@
+# Sujet 87 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(gn)~eg,data=donnees)
+car::Anova(mod)
+
+mod<-lm(log(alat)~albumine+pa,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$pathologie_concomitante=="non",]
+obs<-table(sub$type,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$pupd=="presence","type"]))
+obs
+chisq.test(obs,p=c(1/3,2/3))
+```
+
+1. Existe-t-il une différence significative du logarithme de la quantité de granulocytes neutrophiles selon l'état général ?
+
+2. Le logarithme de l'ALAT peut-il être prédit par l'albuminémie et la pression artérielle ?
+
+3. Pour les chiennes sans pathologie concomitante, la répartition du statut des muqueuses diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Parmi les chiennes présentant une polyurie-polydipsie, peut-on considérer qu'il y a deux fois plus de chiennes pyo que de chiennes non pyo ? (attention à l'ordre des niveaux du facteur)

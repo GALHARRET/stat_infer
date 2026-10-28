@@ -1,0 +1,34 @@
+# Sujet 27 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(glucose~pupd,data=donnees)
+
+mod<-lm(lymphocyte~albumine+plaquette+glucose,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$sirs!="absence",]
+obs<-table(sub$pupd,sub$type)
+obs
+chisq.test(obs)
+
+t.test(log(alat)~type,data=donnees[donnees$sirs=="absence",])
+```
+
+1. Existe-t-il une différence significative de glycémie entre les chiennes présentant une polyurie-polydipsie et les autres ?
+
+2. La quantité de lymphocytes peut-elle être prédite par l'albuminémie, la quantité de plaquettes et la glycémie ?
+
+3. Pour les chiennes présentant un sirs (quel que soit son stade), la présence d'une polyurie-polydipsie se répartit-elle différemment selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes ne présentant pas de sirs, existe-t-il une différence significative du logarithme de l'ALAT entre les chiennes pyo et les autres ?

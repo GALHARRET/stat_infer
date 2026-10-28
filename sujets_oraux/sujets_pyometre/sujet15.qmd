@@ -1,0 +1,34 @@
+# Sujet 15 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~muqueuse,data=donnees)
+car::Anova(mod)
+
+mod<-lm(plaquette~fr,data=donnees)
+summary(mod)
+
+obs<-table(donnees$tbdigestif,donnees$eg)
+obs
+chisq.test(obs)
+
+t.test(albumine~tbdigestif,data=donnees[donnees$type=="non_pyo",])
+```
+
+1. Existe-t-il une différence significative de pression artérielle selon le statut des muqueuses ?
+
+2. Existe-t-il un lien significatif entre la quantité de plaquettes et la fréquence respiratoire ?
+
+3. La répartition de l'état général diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes non pyo, existe-t-il une différence significative d'albuminémie selon la présence d'un trouble digestif ?

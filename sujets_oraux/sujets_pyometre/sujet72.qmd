@@ -1,0 +1,34 @@
+# Sujet 72 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(ht~sirs,data=donnees)
+car::Anova(mod)
+
+mod<-lm(log(uree)~pa+albumine+ht,data=donnees)
+summary(mod)
+
+obs<-table(donnees$pupd,donnees$muqueuse)
+obs
+chisq.test(obs)
+
+t.test(log(alat)~pupd,data=donnees[donnees$type=="non_pyo",])
+```
+
+1. Existe-t-il une différence significative d'hématocrite selon le statut sirs ?
+
+2. Le logarithme de l'urémie peut-il être prédit par la pression artérielle, l'albuminémie et l'hématocrite ?
+
+3. La répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Pour les chiennes non pyo, existe-t-il une différence significative du logarithme de l'ALAT selon la présence d'une polyurie-polydipsie ?

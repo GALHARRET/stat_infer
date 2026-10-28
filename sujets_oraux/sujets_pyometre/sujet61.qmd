@@ -1,0 +1,34 @@
+# Sujet 61 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(log(pal)~tbdigestif,data=donnees)
+
+mod<-lm(ht~pa+uree,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$pathologie_concomitante=="non",]
+obs<-table(sub$type,sub$sirs)
+obs
+chisq.test(obs)
+
+t.test(log(creat)~pupd,data=donnees[donnees$type=="pyo",])
+```
+
+1. Existe-t-il une différence significative du logarithme des phosphatases alcalines entre les chiennes présentant un trouble digestif et les autres ?
+
+2. L'hématocrite peut-il être prédit par la pression artérielle et l'urémie ?
+
+3. Pour les chiennes sans pathologie concomitante, la répartition du statut sirs diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes pyo, peut-on penser qu'il existe une différence significative du logarithme de la créatininémie selon la présence d'une polyurie-polydipsie ?

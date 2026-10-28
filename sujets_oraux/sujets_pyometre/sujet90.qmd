@@ -1,0 +1,34 @@
+# Sujet 90 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+t.test(log(creat)~tbdigestif,data=donnees)
+
+mod<-lm(lymphocyte~pa+fr,data=donnees)
+summary(mod)
+
+sub<-donnees[donnees$pupd=="presence",]
+obs<-table(sub$type,sub$tbdigestif)
+obs
+chisq.test(obs)
+
+t.test(plaquette~type,data=donnees[donnees$eg=="decubitus",])
+```
+
+1. Existe-t-il une différence significative du logarithme de la créatininémie entre les chiennes présentant un trouble digestif et les autres ?
+
+2. La quantité de lymphocytes peut-elle être prédite par la pression artérielle et la fréquence respiratoire ?
+
+3. Pour les chiennes présentant une polyurie-polydipsie, la présence d'un trouble digestif se répartit-elle différemment selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes en décubitus, existe-t-il une différence significative de la quantité de plaquettes entre les chiennes pyo et les autres ?
