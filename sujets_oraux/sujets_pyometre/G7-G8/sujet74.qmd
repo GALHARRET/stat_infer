@@ -1,0 +1,36 @@
+# Sujet 74 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(ht~sirs,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$globuline,donnees$pal,method="spearman",exact=FALSE)
+
+sub<-droplevels(donnees[donnees$pupd=="absence",])
+obs<-table(sub$tbdigestif,sub$eg)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$pupd)
+obs
+chisq.test(obs,p=c(0.6,0.4))
+```
+
+1. Existe-t-il une différence significative d'hématocrite selon le statut sirs ?
+
+2. Existe-t-il une corrélation significative entre la globulinémie et les phosphatases alcalines ?
+
+3. Pour les chiennes sans polyurie-polydipsie, la répartition de l'état général diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Peut-on considérer que 40 % des chiennes présentent une polyurie-polydipsie ? (attention à l'ordre des niveaux du facteur)

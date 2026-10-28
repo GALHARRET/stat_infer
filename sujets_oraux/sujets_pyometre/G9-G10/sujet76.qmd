@@ -1,0 +1,36 @@
+# Sujet 76 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(albumine~eg,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$proteinetotale,donnees$lymphocyte)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$pathologie_concomitante,sub$sirs)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$type)
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative d'albuminémie selon l'état général ?
+
+2. Existe-t-il une corrélation significative entre la protéinémie totale et la quantité de lymphocytes ?
+
+3. Pour les chiennes pyo, la répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Peut-on considérer qu'il y a autant de chiennes pyo que de chiennes non pyo ?

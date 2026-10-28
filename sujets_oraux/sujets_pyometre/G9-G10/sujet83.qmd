@@ -1,0 +1,36 @@
+# Sujet 83 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(glucose~fr+plaquette+lymphocyte,data=donnees)
+summary(mod)
+
+t.test(monocyte~pathologie_concomitante,data=donnees)
+
+sub<-droplevels(donnees[donnees$pupd=="absence",])
+obs<-table(sub$type,sub$sirs)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$tbdigestif)
+obs
+chisq.test(obs)
+```
+
+1. La glycémie peut-elle être prédite par la fréquence respiratoire, la quantité de plaquettes et la quantité de lymphocytes ?
+
+2. Existe-t-il une différence significative de la quantité de monocytes entre les chiennes présentant une pathologie concomitante et les autres ?
+
+3. Pour les chiennes sans polyurie-polydipsie, la répartition du statut sirs diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Peut-on considérer qu'il y a autant de chiennes avec que sans trouble digestif ?

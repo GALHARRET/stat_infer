@@ -1,0 +1,35 @@
+# Sujet 28 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(proteinetotale~eg,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$pa,donnees$glucose)
+
+obs<-table(donnees$tbdigestif,donnees$eg)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$sirs)
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative de protéinémie totale selon l'état général ?
+
+2. Existe-t-il une corrélation significative entre la pression artérielle et la glycémie ?
+
+3. La répartition de l'état général diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Peut-on considérer que les quatre statuts sirs sont représentés de façon équilibrée ?

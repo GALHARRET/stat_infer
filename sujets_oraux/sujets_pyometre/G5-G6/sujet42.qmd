@@ -1,0 +1,36 @@
+# Sujet 42 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(lymphocyte~muqueuse,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$proteinetotale,donnees$plaquette)
+
+sub<-droplevels(donnees[donnees$pathologie_concomitante=="oui",])
+obs<-table(sub$tbdigestif,sub$eg)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$pupd)
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative de la quantité de lymphocytes selon le statut des muqueuses ?
+
+2. Existe-t-il une corrélation significative entre la protéinémie totale et la quantité de plaquettes ?
+
+3. Pour les chiennes présentant une pathologie concomitante, la répartition de l'état général diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Peut-on considérer qu'il y a autant de chiennes avec que sans polyurie-polydipsie ?

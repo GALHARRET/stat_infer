@@ -1,0 +1,36 @@
+# Sujet 78 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~sirs,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$pal,donnees$alat,method="spearman",exact=FALSE)
+
+sub<-droplevels(donnees[donnees$pathologie_concomitante=="non",])
+obs<-table(sub$pupd,sub$sirs)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$muqueuse)
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative de pression artérielle selon le statut sirs ?
+
+2. Existe-t-il une corrélation significative entre les phosphatases alcalines et l'ALAT ?
+
+3. Pour les chiennes sans pathologie concomitante, la répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Peut-on considérer que les cinq statuts des muqueuses sont représentés de façon équilibrée ?

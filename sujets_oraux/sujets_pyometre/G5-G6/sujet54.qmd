@@ -1,0 +1,36 @@
+# Sujet 54 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(globuline~sirs,data=droplevels(donnees[donnees$type=="pyo",]))
+car::Anova(mod)
+
+cor.test(donnees$proteinetotale,donnees$lymphocyte)
+
+sub<-droplevels(donnees[donnees$sirs=="choc septique",])
+obs<-table(sub$pathologie_concomitante,sub$pupd)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$sirs)
+obs
+chisq.test(obs,p=c(0.3,0.3,0.25,0.15))
+```
+
+1. Pour les chiennes pyo, existe-t-il une différence significative de globulinémie selon le statut sirs ?
+
+2. Existe-t-il une corrélation significative entre la protéinémie totale et la quantité de lymphocytes ?
+
+3. Pour les chiennes en choc septique, la répartition de la présence d'une polyurie-polydipsie diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Peut-on considérer que les statuts sirs (absence, sepsis simple, sepsis sévère, choc septique) se répartissent respectivement selon les proportions 30 %, 30 %, 25 % et 15 % ?

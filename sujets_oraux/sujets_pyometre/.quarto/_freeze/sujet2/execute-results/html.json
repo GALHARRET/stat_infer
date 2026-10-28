@@ -1,0 +1,15 @@
+{
+  "hash": "214652eec60b3df6bb57a2684c1a83bf",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Sujet 2 {.unnumbered}\n\n## Consignes :\n\n- Toutes les questions sont indépendantes.\n\n- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. \n\n- Le choix du test statistique sera justifié.\n\n## Questions :\n\n::: {.cell}\n\n:::\n\n\n1. Existe-t-il un lien significatif entre la pression artérielle et la fréquence de respiration ? \n\n2. La pression artérielle est-elle significativement différente selon le statut SIRS ?\n\n3. Pour les chiennes ayant une présence de polyurie / polydipsie (pupd), peut-on penser qu'il a 3 fois plus de chiennes pyo ?\n\n4. La répartition du statut SIRS diffère-t-elle significativement selon que la chienne est atteinte ou non de polyurie / polydipsie (pupd)? \n\n ",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

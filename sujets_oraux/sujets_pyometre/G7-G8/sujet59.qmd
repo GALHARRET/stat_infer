@@ -1,0 +1,35 @@
+# Sujet 59 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~albumine+glucose,data=donnees)
+summary(mod)
+
+t.test(ht~tbdigestif,data=donnees[donnees$type=="pyo",])
+
+obs<-table(donnees$pupd,donnees$eg)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$sirs)
+obs
+chisq.test(obs)
+```
+
+1. La pression artérielle peut-elle être prédite par l'albuminémie et la glycémie ?
+
+2. Pour les chiennes pyo, existe-t-il une différence significative d'hématocrite entre les chiennes présentant un trouble digestif et les autres ?
+
+3. La répartition de l'état général diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Peut-on considérer que les quatre statuts sirs sont représentés de façon équilibrée ?

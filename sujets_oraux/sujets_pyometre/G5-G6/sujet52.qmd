@@ -1,0 +1,36 @@
+# Sujet 52 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(gn)~muqueuse,data=droplevels(donnees[donnees$type=="pyo",]))
+car::Anova(mod)
+
+cor.test(donnees$fr,donnees$pal,method="spearman",exact=FALSE)
+
+sub<-droplevels(donnees[donnees$type=="non_pyo",])
+obs<-table(sub$pupd,sub$tbdigestif)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="pyo","pathologie_concomitante"]))
+obs
+chisq.test(obs)
+```
+
+1. Pour les chiennes pyo, existe-t-il une différence significative du logarithme de la quantité de granulocytes neutrophiles selon le statut des muqueuses ?
+
+2. Existe-t-il une corrélation significative entre la fréquence respiratoire et les phosphatases alcalines ?
+
+3. Pour les chiennes non pyo, la répartition de la présence d'un trouble digestif diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Pour les chiennes pyo, peut-on considérer qu'il y a autant de chiennes avec que sans pathologie concomitante ?

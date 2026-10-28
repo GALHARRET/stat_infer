@@ -1,0 +1,36 @@
+# Sujet 12 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(proteinetotale~eg,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$alat,donnees$gn,method="spearman",exact=FALSE)
+
+sub<-droplevels(donnees[donnees$eg=="bon",])
+obs<-table(sub$tbdigestif,sub$pupd)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$pathologie_concomitante)
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative de protéinémie totale selon l'état général ?
+
+2. Existe-t-il une corrélation significative entre l'ALAT et la quantité de granulocytes neutrophiles ?
+
+3. Pour les chiennes en bon état général, la répartition de la présence d'une polyurie-polydipsie diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Peut-on considérer qu'il y a autant de chiennes avec que sans pathologie concomitante ?

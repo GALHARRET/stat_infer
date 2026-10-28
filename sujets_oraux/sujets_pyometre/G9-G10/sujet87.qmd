@@ -1,0 +1,35 @@
+# Sujet 87 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~albumine+plaquette,data=donnees)
+summary(mod)
+
+t.test(log(creat)~tbdigestif,data=donnees[donnees$type=="pyo",])
+
+obs<-table(donnees$pupd,donnees$tbdigestif)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$eg!="bon","pathologie_concomitante"]))
+obs
+chisq.test(obs)
+```
+
+1. La pression artérielle peut-elle être prédite par l'albuminémie et la quantité de plaquettes ?
+
+2. Pour les chiennes pyo, existe-t-il une différence significative du logarithme de la créatininémie entre les chiennes présentant un trouble digestif et les autres ?
+
+3. La répartition de la présence d'un trouble digestif diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Pour les chiennes dont l'état général n'est pas bon, peut-on considérer qu'il y a autant de chiennes avec que sans pathologie concomitante ?

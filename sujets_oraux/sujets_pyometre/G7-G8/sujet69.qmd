@@ -1,0 +1,35 @@
+# Sujet 69 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(monocyte~globuline+gn,data=donnees)
+summary(mod)
+
+t.test(fr~type,data=donnees)
+
+obs<-table(donnees$pupd,donnees$sirs)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="pyo","pathologie_concomitante"]))
+obs
+chisq.test(obs,p=c(2/3,1/3))
+```
+
+1. La quantité de monocytes peut-elle être prédite par la globulinémie et la quantité de granulocytes neutrophiles ?
+
+2. Existe-t-il une différence significative de fréquence respiratoire entre les chiennes atteintes de pyométrie et les autres ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Parmi les chiennes pyo, peut-on considérer qu'il y a deux fois plus de chiennes sans pathologie concomitante que de chiennes avec ? (attention à l'ordre des niveaux du facteur)

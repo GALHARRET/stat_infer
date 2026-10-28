@@ -1,0 +1,36 @@
+# Sujet 79 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(albumine~pa+lymphocyte+globuline+ht,data=donnees)
+summary(mod)
+
+t.test(log(uree)~pathologie_concomitante,data=donnees)
+
+sub<-droplevels(donnees[donnees$eg!="bon",])
+obs<-table(sub$pupd,sub$tbdigestif)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="pyo","pathologie_concomitante"]))
+obs
+chisq.test(obs)
+```
+
+1. L'albuminémie peut-elle être prédite par la pression artérielle, la quantité de lymphocytes, la globulinémie et l'hématocrite ?
+
+2. Existe-t-il une différence significative du logarithme de l'urémie entre les chiennes présentant une pathologie concomitante et les autres ?
+
+3. Pour les chiennes dont l'état général n'est pas bon, la répartition de la présence d'un trouble digestif diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Pour les chiennes pyo, peut-on considérer qu'il y a autant de chiennes avec que sans pathologie concomitante ?

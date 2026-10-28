@@ -1,0 +1,36 @@
+# Sujet 49 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(glucose~pa+lymphocyte,data=donnees)
+summary(mod)
+
+t.test(monocyte~pupd,data=donnees)
+
+sub<-droplevels(donnees[donnees$type=="non_pyo",])
+obs<-table(sub$tbdigestif,sub$pupd)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$muqueuse=="RH","sirs"]))
+obs
+chisq.test(obs)
+```
+
+1. La glycémie peut-elle être prédite par la pression artérielle et la quantité de lymphocytes ?
+
+2. Existe-t-il une différence significative de la quantité de monocytes entre les chiennes présentant une polyurie-polydipsie et les autres ?
+
+3. Pour les chiennes non pyo, la répartition de la présence d'une polyurie-polydipsie diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes ayant des muqueuses roses et humides, peut-on considérer que les quatre statuts sirs sont représentés de façon équilibrée ?

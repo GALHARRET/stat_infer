@@ -1,0 +1,36 @@
+# Sujet 32 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(plaquette~muqueuse,data=droplevels(donnees[donnees$type=="pyo",]))
+car::Anova(mod)
+
+cor.test(donnees$pa,donnees$albumine)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$tbdigestif,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$sirs=="choc septique","pupd"]))
+obs
+chisq.test(obs)
+```
+
+1. Pour les chiennes pyo, existe-t-il une différence significative de la quantité de plaquettes selon le statut des muqueuses ?
+
+2. Existe-t-il une corrélation significative entre la pression artérielle et l'albuminémie ?
+
+3. Pour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes en choc septique, peut-on considérer qu'il y a autant de chiennes avec que sans polyurie-polydipsie ?

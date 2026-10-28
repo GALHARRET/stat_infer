@@ -1,0 +1,36 @@
+# Sujet 81 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(fr~glucose+albumine,data=donnees)
+summary(mod)
+
+t.test(pa~pathologie_concomitante,data=donnees[donnees$type=="pyo",])
+
+sub<-droplevels(donnees[donnees$pathologie_concomitante=="non",])
+obs<-table(sub$tbdigestif,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$eg!="bon","type"]))
+obs
+chisq.test(obs)
+```
+
+1. La fréquence respiratoire peut-elle être prédite par la glycémie et l'albuminémie ?
+
+2. Pour les chiennes pyo, existe-t-il une différence significative de pression artérielle entre les chiennes présentant une pathologie concomitante et les autres ?
+
+3. Pour les chiennes sans pathologie concomitante, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes dont l'état général n'est pas bon, peut-on considérer qu'il y a autant de chiennes pyo que de chiennes non pyo ?

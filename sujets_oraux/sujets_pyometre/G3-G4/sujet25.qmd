@@ -1,0 +1,35 @@
+# Sujet 25 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(pal)~globuline+gn,data=donnees)
+summary(mod)
+
+t.test(lymphocyte~pupd,data=donnees)
+
+obs<-table(donnees$tbdigestif,donnees$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$eg=="decubitus","type"]))
+obs
+chisq.test(obs)
+```
+
+1. Le logarithme des phosphatases alcalines peut-il être prédit par la globulinémie et la quantité de granulocytes neutrophiles ?
+
+2. Existe-t-il une différence significative de la quantité de lymphocytes entre les chiennes présentant une polyurie-polydipsie et les autres ?
+
+3. La répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes en décubitus, peut-on considérer qu'il y a autant de chiennes pyo que de chiennes non pyo ?

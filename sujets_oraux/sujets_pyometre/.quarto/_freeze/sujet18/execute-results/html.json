@@ -1,0 +1,15 @@
+{
+  "hash": "dc3f56535fbec41c8709e1a7b90d7271",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Sujet 18 {.unnumbered}\n\n## Consignes :\n\n- Toutes les questions sont indépendantes.\n\n- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. \n\n- Le choix du test statistique sera justifié.\n\n## Questions :\n\n::: {.cell}\n\n:::\n\n\n1. Existe-t-il une différence significative du logarithme de l'ALAT selon le statut sirs ?\n\n2. La quantité de lymphocytes peut-elle être prédite par la pression artérielle et la fréquence respiratoire ?\n\n3. La présence d'une polyurie-polydipsie se répartit-elle différemment selon la présence ou non d'un trouble digestif ?\n\n4. Pour les chiennes pyo, peut-on penser qu'il existe une différence significative du logarithme de l'urémie selon la présence d'un trouble digestif ?\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

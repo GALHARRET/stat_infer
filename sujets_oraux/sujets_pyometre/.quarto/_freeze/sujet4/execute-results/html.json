@@ -1,0 +1,15 @@
+{
+  "hash": "a5676b2688c247e1c08c14cb345d6829",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Sujet 4 {.unnumbered}\n\n## Consignes :\n\n- Toutes les questions sont indépendantes.\n\n- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. \n\n- Le choix du test statistique sera justifié.\n\n## Questions :\n\n::: {.cell}\n\n:::\n\n\n1. Existe-t-il une différence de plaquette selon le statut sirs ? \n\n2. Existe-t-il un lien significatif entre la pression artérielle et la quantité de plaquettes ?\n\n3. La répartition du statut sirs diffère-t-elle significativement selon la présence ou pas d'une pathologie concomitante ? \n\n4. Pour les chiennes ayant un choc septique pour le statut sirs, peut-on penser qu'il existe une différence significative au niveau de la quantité de plaquettes entre les chiennes pyo et les autres ?\n ",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

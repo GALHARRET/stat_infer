@@ -1,0 +1,35 @@
+# Sujet 15 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(alat)~pa+fr+albumine,data=donnees)
+summary(mod)
+
+t.test(glucose~pupd,data=donnees)
+
+obs<-table(donnees$type,donnees$tbdigestif)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$sirs=="absence","pathologie_concomitante"]))
+obs
+chisq.test(obs)
+```
+
+1. Le logarithme de l'ALAT peut-il être prédit par la pression artérielle, la fréquence respiratoire et l'albuminémie ?
+
+2. Existe-t-il une différence significative de glycémie entre les chiennes présentant une polyurie-polydipsie et les autres ?
+
+3. La répartition de la présence d'un trouble digestif diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes ne présentant pas de sirs, peut-on considérer qu'il y a autant de chiennes avec que sans pathologie concomitante ?

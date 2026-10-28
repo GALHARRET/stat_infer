@@ -1,0 +1,36 @@
+# Sujet 63 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(albumine~globuline+lymphocyte,data=donnees)
+summary(mod)
+
+t.test(fr~type,data=donnees[donnees$pupd=="presence",])
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$pupd,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$eg)
+obs
+chisq.test(obs)
+```
+
+1. L'albuminémie peut-elle être prédite par la globulinémie et la quantité de lymphocytes ?
+
+2. Pour les chiennes présentant une polyurie-polydipsie, existe-t-il une différence significative de fréquence respiratoire entre les chiennes pyo et les autres ?
+
+3. Pour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Peut-on considérer que les quatre catégories d'état général sont représentées de façon équilibrée ?

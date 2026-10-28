@@ -1,0 +1,35 @@
+# Sujet 17 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(fr~plaquette+glucose+albumine,data=donnees)
+summary(mod)
+
+t.test(log(alat)~type,data=donnees[donnees$tbdigestif=="oui",])
+
+obs<-table(donnees$pupd,donnees$tbdigestif)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$pathologie_concomitante=="non","type"]))
+obs
+chisq.test(obs)
+```
+
+1. La fréquence respiratoire peut-elle être prédite par la quantité de plaquettes, la glycémie et l'albuminémie ?
+
+2. Pour les chiennes présentant un trouble digestif, existe-t-il une différence significative du logarithme de l'ALAT entre les chiennes pyo et les autres ?
+
+3. La répartition de la présence d'un trouble digestif diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Pour les chiennes sans pathologie concomitante, peut-on considérer qu'il y a autant de chiennes pyo que de chiennes non pyo ?

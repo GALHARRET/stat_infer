@@ -1,0 +1,36 @@
+# Sujet 46 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(albumine~muqueuse,data=droplevels(donnees[donnees$type=="pyo",]))
+car::Anova(mod)
+
+cor.test(donnees$ht,donnees$pal,method="spearman",exact=FALSE)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$pathologie_concomitante,sub$pupd)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="pyo","eg"]))
+obs
+chisq.test(obs)
+```
+
+1. Pour les chiennes pyo, existe-t-il une différence significative d'albuminémie selon le statut des muqueuses ?
+
+2. Existe-t-il une corrélation significative entre l'hématocrite et les phosphatases alcalines ?
+
+3. Pour les chiennes pyo, la répartition de la présence d'une polyurie-polydipsie diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Pour les chiennes pyo, peut-on considérer que les quatre catégories d'état général sont représentées de façon équilibrée ?

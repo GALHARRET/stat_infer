@@ -1,0 +1,36 @@
+# Sujet 26 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(uree)~sirs,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$fr,donnees$globuline)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$tbdigestif,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="pyo","pathologie_concomitante"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative du logarithme de l'urémie selon le statut sirs ?
+
+2. Existe-t-il une corrélation significative entre la fréquence respiratoire et la globulinémie ?
+
+3. Pour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes pyo, peut-on considérer qu'il y a autant de chiennes avec que sans pathologie concomitante ?

@@ -1,0 +1,36 @@
+# Sujet 7 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(plaquette~pa+albumine+lymphocyte,data=donnees)
+summary(mod)
+
+t.test(monocyte~type,data=donnees)
+
+sub<-droplevels(donnees[donnees$muqueuse=="RH",])
+obs<-table(sub$type,sub$pupd)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$eg=="bon","tbdigestif"]))
+obs
+chisq.test(obs)
+```
+
+1. La quantité de plaquettes peut-elle être prédite par la pression artérielle, l'albuminémie et la quantité de lymphocytes ?
+
+2. Existe-t-il une différence significative de la quantité de monocytes entre les chiennes atteintes de pyométrie et les autres ?
+
+3. Pour les chiennes ayant des muqueuses roses et humides, la répartition de la présence d'une polyurie-polydipsie diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes en bon état général, peut-on considérer qu'il y a autant de chiennes avec que sans trouble digestif ?

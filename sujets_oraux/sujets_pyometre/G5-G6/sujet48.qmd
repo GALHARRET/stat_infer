@@ -1,0 +1,35 @@
+# Sujet 48 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(uree)~eg,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$fr,donnees$alat,method="spearman",exact=FALSE)
+
+obs<-table(donnees$pathologie_concomitante,donnees$eg)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$type)
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative du logarithme de l'urémie selon l'état général ?
+
+2. Existe-t-il une corrélation significative entre la fréquence respiratoire et l'ALAT ?
+
+3. La répartition de l'état général diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Peut-on considérer qu'il y a autant de chiennes pyo que de chiennes non pyo ?

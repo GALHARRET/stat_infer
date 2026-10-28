@@ -1,0 +1,35 @@
+# Sujet 21 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(fr~albumine+lymphocyte+plaquette,data=donnees)
+summary(mod)
+
+t.test(ht~type,data=donnees[donnees$sirs=="absence",])
+
+obs<-table(donnees$pupd,donnees$sirs)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$eg)
+obs
+chisq.test(obs)
+```
+
+1. La fréquence respiratoire peut-elle être prédite par l'albuminémie, la quantité de lymphocytes et la quantité de plaquettes ?
+
+2. Pour les chiennes ne présentant pas de sirs, existe-t-il une différence significative d'hématocrite entre les chiennes pyo et les autres ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Peut-on considérer que les quatre catégories d'état général sont représentées de façon équilibrée ?

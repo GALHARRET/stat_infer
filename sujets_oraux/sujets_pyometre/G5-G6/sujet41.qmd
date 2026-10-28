@@ -1,0 +1,35 @@
+# Sujet 41 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(ht~pa+uree,data=donnees)
+summary(mod)
+
+t.test(log(gn)~tbdigestif,data=donnees)
+
+obs<-table(donnees$tbdigestif,donnees$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="pyo","pupd"]))
+obs
+chisq.test(obs)
+```
+
+1. L'hématocrite peut-il être prédit par la pression artérielle et l'urémie ?
+
+2. Existe-t-il une différence significative du logarithme de la quantité de granulocytes neutrophiles entre les chiennes présentant un trouble digestif et les autres ?
+
+3. La répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes pyo, peut-on considérer qu'il y a autant de chiennes avec que sans polyurie-polydipsie ?

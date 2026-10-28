@@ -1,0 +1,15 @@
+{
+  "hash": "34e91959d84ab7695c9e10122c8cbb94",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Sujet 13 {.unnumbered}\n\n## Consignes :\n\n- Toutes les questions sont indépendantes.\n\n- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. \n\n- Le choix du test statistique sera justifié.\n\n## Questions :\n\n::: {.cell}\n\n:::\n\n\n1. Existe-t-il une différence significative de globulinémie entre les chiennes atteintes de pyométrie et les autres ?\n\n2. Existe-t-il un lien significatif entre le logarithme de la créatininémie et le logarithme de l'urémie ?\n\n3. La répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?\n\n4. Pour les chiennes en sepsis sévère, existe-t-il une différence significative du logarithme des phosphatases alcalines entre les chiennes pyo et les autres ?\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

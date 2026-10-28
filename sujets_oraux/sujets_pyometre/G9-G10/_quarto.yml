@@ -1,0 +1,44 @@
+project:
+  type: book
+  output-dir: G9G10
+
+book:
+  title: "Sujets Pyométrie"
+  author: "Cariou, V. Franchi, G. Galharret, J.-M. Mahieu, B."
+  date: "10/18/2026"
+  chapters:
+    - index.qmd
+    - sujet75.qmd
+    - sujet76.qmd
+    - sujet77.qmd
+    - sujet78.qmd
+    - sujet79.qmd
+    - sujet80.qmd
+    - sujet81.qmd
+    - sujet82.qmd
+    - sujet83.qmd
+    - sujet84.qmd
+    - sujet85.qmd
+    - sujet86.qmd
+    - sujet87.qmd
+    - sujet88.qmd
+    - sujet89.qmd
+    - sujet90.qmd
+    - sujet91.qmd
+    - sujet92.qmd
+    - sujet93.qmd
+    - sujet94.qmd
+    - sujet95.qmd
+
+
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+
+

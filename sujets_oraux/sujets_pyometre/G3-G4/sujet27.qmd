@@ -1,0 +1,36 @@
+# Sujet 27 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(lymphocyte~pa+fr,data=donnees)
+summary(mod)
+
+t.test(plaquette~tbdigestif,data=donnees[donnees$type=="pyo",])
+
+sub<-droplevels(donnees[donnees$pupd=="presence",])
+obs<-table(sub$type,sub$tbdigestif)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$pathologie_concomitante=="oui","sirs"]))
+obs
+chisq.test(obs)
+```
+
+1. La quantité de lymphocytes peut-elle être prédite par la pression artérielle et la fréquence respiratoire ?
+
+2. Pour les chiennes pyo, existe-t-il une différence significative de la quantité de plaquettes entre les chiennes présentant un trouble digestif et les autres ?
+
+3. Pour les chiennes présentant une polyurie-polydipsie, la répartition de la présence d'un trouble digestif diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes présentant une pathologie concomitante, peut-on considérer que les quatre statuts sirs sont représentés de façon équilibrée ?

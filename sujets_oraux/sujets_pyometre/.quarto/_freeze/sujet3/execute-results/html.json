@@ -1,0 +1,15 @@
+{
+  "hash": "b3f7e1a7fd9bee4c793a7d5a6079050c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Sujet 3 {.unnumbered}\n\n## Consignes :\n\n- Toutes les questions sont indépendantes.\n\n- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. \n\n- Le choix du test statistique sera justifié.\n\n## Questions :\n\n::: {.cell}\n\n:::\n\n\n1. Existe-t-il une différence de phosphatases alcalines (exprimée en logarithme) entre les chiennes ayant un pupd et celles n'en ayant pas ? \n\n2. Le logarithme de phosphatases alcalines peut-il être prédit  par les variables globuline, monocyte et granulocytes neutrophiles ?\n\n3. La répartition du statut des muqueuses diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ? \n\n4. Pour les chiennes pyo, peut-on penser qu'il existe une différence significative du logarithme de phosphatases alcalines selon le fait d'avoir une pathologie concomitante ?\n ",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

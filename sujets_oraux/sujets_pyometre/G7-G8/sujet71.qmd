@@ -1,0 +1,36 @@
+# Sujet 71 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(plaquette~pa+fr+lymphocyte+gn,data=donnees)
+summary(mod)
+
+t.test(monocyte~tbdigestif,data=donnees)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$pupd,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$type)
+obs
+chisq.test(obs)
+```
+
+1. La quantité de plaquettes peut-elle être prédite par la pression artérielle, la fréquence respiratoire, la quantité de lymphocytes et la quantité de granulocytes neutrophiles ?
+
+2. Existe-t-il une différence significative de la quantité de monocytes entre les chiennes présentant un trouble digestif et les autres ?
+
+3. Pour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Peut-on considérer qu'il y a autant de chiennes pyo que de chiennes non pyo ?

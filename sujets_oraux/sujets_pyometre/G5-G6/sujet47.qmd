@@ -1,0 +1,35 @@
+# Sujet 47 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(creat~uree+ht+albumine,data=donnees)
+summary(mod)
+
+t.test(glucose~tbdigestif,data=donnees[donnees$type=="pyo",])
+
+obs<-table(donnees$pathologie_concomitante,donnees$pupd)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$sirs)
+obs
+chisq.test(obs,p=c(0.3,0.3,0.25,0.15))
+```
+
+1. La créatininémie peut-elle être prédite par l'urémie, l'hématocrite et l'albuminémie ?
+
+2. Pour les chiennes pyo, existe-t-il une différence significative de glycémie entre les chiennes présentant un trouble digestif et les autres ?
+
+3. La répartition de la présence d'une polyurie-polydipsie diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Peut-on considérer que les statuts sirs (absence, sepsis simple, sepsis sévère, choc septique) se répartissent respectivement selon les proportions 30 %, 30 %, 25 % et 15 % ?

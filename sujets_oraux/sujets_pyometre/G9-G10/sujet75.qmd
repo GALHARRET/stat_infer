@@ -1,0 +1,36 @@
+# Sujet 75 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~fr+albumine+plaquette+glucose,data=donnees)
+summary(mod)
+
+t.test(globuline~type,data=donnees[donnees$tbdigestif=="oui",])
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$pupd,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="pyo","tbdigestif"]))
+obs
+chisq.test(obs)
+```
+
+1. La pression artérielle peut-elle être prédite par la fréquence respiratoire, l'albuminémie, la quantité de plaquettes et la glycémie ?
+
+2. Pour les chiennes présentant un trouble digestif, existe-t-il une différence significative de globulinémie entre les chiennes pyo et les autres ?
+
+3. Pour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Pour les chiennes pyo, peut-on considérer qu'il y a autant de chiennes avec que sans trouble digestif ?

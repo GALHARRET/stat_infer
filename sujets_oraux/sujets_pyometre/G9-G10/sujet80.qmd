@@ -1,0 +1,35 @@
+# Sujet 80 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(proteinetotale~eg,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$glucose,donnees$gn,method="spearman",exact=FALSE)
+
+obs<-table(donnees$pupd,donnees$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$sirs)
+obs
+chisq.test(obs,p=c(0.3,0.3,0.25,0.15))
+```
+
+1. Existe-t-il une différence significative de protéinémie totale selon l'état général ?
+
+2. Existe-t-il une corrélation significative entre la glycémie et la quantité de granulocytes neutrophiles ?
+
+3. La répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Peut-on considérer que les statuts sirs (absence, sepsis simple, sepsis sévère, choc septique) se répartissent respectivement selon les proportions 30 %, 30 %, 25 % et 15 % ?

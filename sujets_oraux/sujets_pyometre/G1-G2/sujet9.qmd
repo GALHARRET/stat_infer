@@ -1,0 +1,35 @@
+# Sujet 9 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(plaquette~fr+glucose,data=donnees)
+summary(mod)
+
+t.test(log(uree)~type,data=donnees[donnees$muqueuse=="RH",])
+
+obs<-table(donnees$tbdigestif,donnees$sirs)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$tbdigestif=="oui","type"]))
+obs
+chisq.test(obs)
+```
+
+1. La quantité de plaquettes peut-elle être prédite par la fréquence respiratoire et la glycémie ?
+
+2. Pour les chiennes ayant des muqueuses roses et humides, existe-t-il une différence significative du logarithme de l'urémie entre les chiennes pyo et les autres ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes présentant un trouble digestif, peut-on considérer qu'il y a autant de chiennes pyo que de chiennes non pyo ?

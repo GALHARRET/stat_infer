@@ -1,0 +1,36 @@
+# Sujet 30 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~muqueuse,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$uree,donnees$gn,method="spearman",exact=FALSE)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$pupd,sub$eg)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="pyo","pathologie_concomitante"]))
+obs
+chisq.test(obs,p=c(2/3,1/3))
+```
+
+1. Existe-t-il une différence significative de pression artérielle selon le statut des muqueuses ?
+
+2. Existe-t-il une corrélation significative entre l'urémie et la quantité de granulocytes neutrophiles ?
+
+3. Pour les chiennes pyo, la répartition de l'état général diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Parmi les chiennes pyo, peut-on considérer qu'il y a deux fois plus de chiennes sans pathologie concomitante que de chiennes avec ? (attention à l'ordre des niveaux du facteur)

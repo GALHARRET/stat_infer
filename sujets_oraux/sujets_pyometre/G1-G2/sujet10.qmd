@@ -1,0 +1,35 @@
+# Sujet 10 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(albumine~muqueuse,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$proteinetotale,donnees$plaquette)
+
+obs<-table(donnees$type,donnees$eg)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$sirs!="absence","tbdigestif"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative d'albuminémie selon le statut des muqueuses ?
+
+2. Existe-t-il une corrélation significative entre la protéinémie totale et la quantité de plaquettes ?
+
+3. La répartition de l'état général diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes présentant un sirs (quel que soit son stade), peut-on considérer qu'il y a autant de chiennes avec que sans trouble digestif ?

@@ -1,0 +1,36 @@
+# Sujet 36 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(gn)~eg,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$pa,donnees$proteinetotale)
+
+sub<-droplevels(donnees[donnees$eg=="bon",])
+obs<-table(sub$type,sub$pupd)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$eg=="bon","pathologie_concomitante"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative du logarithme de la quantité de granulocytes neutrophiles selon l'état général ?
+
+2. Existe-t-il une corrélation significative entre la pression artérielle et la protéinémie totale ?
+
+3. Pour les chiennes en bon état général, la répartition de la présence d'une polyurie-polydipsie diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes en bon état général, peut-on considérer qu'il y a autant de chiennes avec que sans pathologie concomitante ?

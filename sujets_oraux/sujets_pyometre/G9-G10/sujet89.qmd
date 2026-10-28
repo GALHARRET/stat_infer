@@ -1,0 +1,35 @@
+# Sujet 89 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~lymphocyte+plaquette+albumine,data=donnees)
+summary(mod)
+
+t.test(ht~type,data=donnees)
+
+obs<-table(donnees$tbdigestif,donnees$eg)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$pupd)
+obs
+chisq.test(obs)
+```
+
+1. La pression artérielle peut-elle être prédite par la quantité de lymphocytes, la quantité de plaquettes et l'albuminémie ?
+
+2. Existe-t-il une différence significative d'hématocrite entre les chiennes atteintes de pyométrie et les autres ?
+
+3. La répartition de l'état général diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Peut-on considérer qu'il y a autant de chiennes avec que sans polyurie-polydipsie ?

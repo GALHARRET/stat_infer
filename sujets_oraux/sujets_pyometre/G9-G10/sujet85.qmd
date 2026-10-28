@@ -1,0 +1,36 @@
+# Sujet 85 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(creat)~pa+albumine+ht,data=donnees)
+summary(mod)
+
+t.test(globuline~tbdigestif,data=donnees)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$tbdigestif,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$type=="pyo","pathologie_concomitante"]))
+obs
+chisq.test(obs)
+```
+
+1. Le logarithme de la créatininémie peut-il être prédit par la pression artérielle, l'albuminémie et l'hématocrite ?
+
+2. Existe-t-il une différence significative de globulinémie entre les chiennes présentant un trouble digestif et les autres ?
+
+3. Pour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes pyo, peut-on considérer qu'il y a autant de chiennes avec que sans pathologie concomitante ?

@@ -1,0 +1,672 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sujets Pyométrie",
+    "section": "",
+    "text": "Contexte de l’étude",
+    "crumbs": [
+      "Contexte de l'étude"
+    ]
+  },
+  {
+    "objectID": "index.html#consignes",
+    "href": "index.html#consignes",
+    "title": "Sujets Pyométrie",
+    "section": "Consignes",
+    "text": "Consignes\nPour l’attribution des sujets et le calendrier de passage, voir sur connect. L’évaluation comportera une présentation des résultats (entre 5 et 10 min) suivie d’un temps de question (5 min), le tout ne dépassant pas 15 min. Tous les hypothèses statistiques seront testées au risque de 5%.",
+    "crumbs": [
+      "Contexte de l'étude"
+    ]
+  },
+  {
+    "objectID": "index.html#contexte",
+    "href": "index.html#contexte",
+    "title": "Sujets Pyométrie",
+    "section": "Contexte",
+    "text": "Contexte\nLe pyomètre se définit comme l’accumulation d’exsudat purulent dans l’utérus. Il s’agit de la pathologie de la reproduction la plus fréquente et l’une des urgences chez la chienne entière. Le SIRS (Systemic Inflammatory Response Syndrome) est le syndrome de réponse inflammatoire systémique. Il désigne une réaction inflammatoire qui s’étend à tout l’organisme : il ne s’agit plus d’une inflammation localisée (dans l’utérus, par exemple), mais d’une réaction généralisée qui touche la température, le cœur, la respiration et les globules blancs. Chez la chienne atteinte de pyométrie, les toxines bactériennes d’E. coli passent dans le sang et peuvent déclencher un SIRS. C’est un marqueur de gravité.\nMarie Le Coz dans le cadre de sa thèse vétérinaire sous la direction de Djemil Bencherif a fait une étude retrospective sur les 4 écoles vétérinaires françaises pour caractériser par des indices hémato-biochimiques comme diagnostic du SIRS. Les données fournies ont été simulées pour cette évaluation et sont disponibles ici. Cette base de données est nommée donnees.",
+    "crumbs": [
+      "Contexte de l'étude"
+    ]
+  },
+  {
+    "objectID": "index.html#dictionnaire-des-variables",
+    "href": "index.html#dictionnaire-des-variables",
+    "title": "Sujets Pyométrie",
+    "section": "Dictionnaire des variables :",
+    "text": "Dictionnaire des variables :\n\ntype : la chienne souffre de pyométrie (pyo) ou non.\npathologie concomitante : la chienne a (n’a pas) de pathologie concomitante.\neg : caractérisation de l’état général (bon, abattement léger, abattement, decubitus).\ntbdigestif : a (n’a pas) de trouble digestif.\npupd : veut dire polyurie / polydipsie, l’animal urine en quantité anormalement grande (PU) et il boit anormalement beaucoup (PD). Deux classes absence/présence.\nmuqueuse : examen de la muqueuese RH (Roses humides, Normal), RS (Roses sèches, Déshydratation), PS (Pâles sèches, Mauvaise perfusion ou anémie, avec déshydratation), CH (Congestionnées humides, Inflammation ou sepsis) CS (Congestionnées sèches, Sepsis avec déshydratation, l’état le plus sévère).\npa : pression artérielle (mmHg, millimètres de mercure).\nfr : fréquence respiratoire (mpm, mouvements respiratoires par minute).\nht: taux d’hématocrite (pourcentage du volume sanguin occupé par les globules rouges).\npal : phosphatases alcalines, une enzyme dosée dans la prise de sang (biochimie), exprimée en UI/L\nalat : alanine aminotransférase, une enzyme du foie dosée en biochimie, exprimée en UI/L.\ngr: nombre de globules rouges (érythrocytes) exprimé en 10⁶/µL.\nhb : hémoglobine (g/dL)\ngn : granulocytes neutrophiles (10³/µL).\nge granulocytes éosinophiles (10³/µL).\nsirs : 4 catégories (aucune, sepsis simple, sepsis sévère, choc septique).\nalbumine (g/L)\nglobuline (g/L)\nproteinetotale (g/L) Somme de l’albumine et de la globuline\nglucose (g/L)\nuree (g/L)\ncreat (µmol/L) créatinine\nlymphocyte (10³/µL)\nmonocyte (10³/µL)\ngb (10³/µL) Basophiles\nglobuleblanc (10³/µL) Somme gn + lymphocyte + monocyte + ge + gb\nplaquette (10³/µL)",
+    "crumbs": [
+      "Contexte de l'étude"
+    ]
+  },
+  {
+    "objectID": "sujet75.html",
+    "href": "sujet75.html",
+    "title": "Sujet 75",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 75"
+    ]
+  },
+  {
+    "objectID": "sujet75.html#consignes",
+    "href": "sujet75.html#consignes",
+    "title": "Sujet 75",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 75"
+    ]
+  },
+  {
+    "objectID": "sujet75.html#questions",
+    "href": "sujet75.html#questions",
+    "title": "Sujet 75",
+    "section": "Questions :",
+    "text": "Questions :\n\nLa pression artérielle peut-elle être prédite par la fréquence respiratoire, l’albuminémie, la quantité de plaquettes et la glycémie ?\nPour les chiennes présentant un trouble digestif, existe-t-il une différence significative de globulinémie entre les chiennes pyo et les autres ?\nPour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d’une polyurie-polydipsie ?\nPour les chiennes pyo, peut-on considérer qu’il y a autant de chiennes avec que sans trouble digestif ?",
+    "crumbs": [
+      "Sujet 75"
+    ]
+  },
+  {
+    "objectID": "sujet76.html",
+    "href": "sujet76.html",
+    "title": "Sujet 76",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 76"
+    ]
+  },
+  {
+    "objectID": "sujet76.html#consignes",
+    "href": "sujet76.html#consignes",
+    "title": "Sujet 76",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 76"
+    ]
+  },
+  {
+    "objectID": "sujet76.html#questions",
+    "href": "sujet76.html#questions",
+    "title": "Sujet 76",
+    "section": "Questions :",
+    "text": "Questions :\n\nExiste-t-il une différence significative d’albuminémie selon l’état général ?\nExiste-t-il une corrélation significative entre la protéinémie totale et la quantité de lymphocytes ?\nPour les chiennes pyo, la répartition du statut sirs diffère-t-elle significativement selon la présence ou non d’une pathologie concomitante ?\nPeut-on considérer qu’il y a autant de chiennes pyo que de chiennes non pyo ?",
+    "crumbs": [
+      "Sujet 76"
+    ]
+  },
+  {
+    "objectID": "sujet77.html",
+    "href": "sujet77.html",
+    "title": "Sujet 77",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 77"
+    ]
+  },
+  {
+    "objectID": "sujet77.html#consignes",
+    "href": "sujet77.html#consignes",
+    "title": "Sujet 77",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 77"
+    ]
+  },
+  {
+    "objectID": "sujet77.html#questions",
+    "href": "sujet77.html#questions",
+    "title": "Sujet 77",
+    "section": "Questions :",
+    "text": "Questions :\n\nLa quantité de lymphocytes peut-elle être prédite par l’albuminémie, la quantité de plaquettes et la glycémie ?\nPour les chiennes pyo, existe-t-il une différence significative du logarithme de la quantité de granulocytes neutrophiles entre les chiennes présentant un trouble digestif et les autres ?\nPour les chiennes pyo, la répartition de l’état général diffère-t-elle significativement selon la présence ou non d’un trouble digestif ?\nPour les chiennes présentant une pathologie concomitante, peut-on considérer qu’il y a autant de chiennes avec que sans polyurie-polydipsie ?",
+    "crumbs": [
+      "Sujet 77"
+    ]
+  },
+  {
+    "objectID": "sujet78.html",
+    "href": "sujet78.html",
+    "title": "Sujet 78",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 78"
+    ]
+  },
+  {
+    "objectID": "sujet78.html#consignes",
+    "href": "sujet78.html#consignes",
+    "title": "Sujet 78",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 78"
+    ]
+  },
+  {
+    "objectID": "sujet78.html#questions",
+    "href": "sujet78.html#questions",
+    "title": "Sujet 78",
+    "section": "Questions :",
+    "text": "Questions :\n\nExiste-t-il une différence significative de pression artérielle selon le statut sirs ?\nExiste-t-il une corrélation significative entre les phosphatases alcalines et l’ALAT ?\nPour les chiennes sans pathologie concomitante, la répartition du statut sirs diffère-t-elle significativement selon la présence ou non d’une polyurie-polydipsie ?\nPeut-on considérer que les cinq statuts des muqueuses sont représentés de façon équilibrée ?",
+    "crumbs": [
+      "Sujet 78"
+    ]
+  },
+  {
+    "objectID": "sujet79.html",
+    "href": "sujet79.html",
+    "title": "Sujet 79",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 79"
+    ]
+  },
+  {
+    "objectID": "sujet79.html#consignes",
+    "href": "sujet79.html#consignes",
+    "title": "Sujet 79",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 79"
+    ]
+  },
+  {
+    "objectID": "sujet79.html#questions",
+    "href": "sujet79.html#questions",
+    "title": "Sujet 79",
+    "section": "Questions :",
+    "text": "Questions :\n\nL’albuminémie peut-elle être prédite par la pression artérielle, la quantité de lymphocytes, la globulinémie et l’hématocrite ?\nExiste-t-il une différence significative du logarithme de l’urémie entre les chiennes présentant une pathologie concomitante et les autres ?\nPour les chiennes dont l’état général n’est pas bon, la répartition de la présence d’un trouble digestif diffère-t-elle significativement selon la présence ou non d’une polyurie-polydipsie ?\nPour les chiennes pyo, peut-on considérer qu’il y a autant de chiennes avec que sans pathologie concomitante ?",
+    "crumbs": [
+      "Sujet 79"
+    ]
+  },
+  {
+    "objectID": "sujet80.html",
+    "href": "sujet80.html",
+    "title": "Sujet 80",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 80"
+    ]
+  },
+  {
+    "objectID": "sujet80.html#consignes",
+    "href": "sujet80.html#consignes",
+    "title": "Sujet 80",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 80"
+    ]
+  },
+  {
+    "objectID": "sujet80.html#questions",
+    "href": "sujet80.html#questions",
+    "title": "Sujet 80",
+    "section": "Questions :",
+    "text": "Questions :\n\nExiste-t-il une différence significative de protéinémie totale selon l’état général ?\nExiste-t-il une corrélation significative entre la glycémie et la quantité de granulocytes neutrophiles ?\nLa répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d’une polyurie-polydipsie ?\nPeut-on considérer que les statuts sirs (absence, sepsis simple, sepsis sévère, choc septique) se répartissent respectivement selon les proportions 30 %, 30 %, 25 % et 15 % ?",
+    "crumbs": [
+      "Sujet 80"
+    ]
+  },
+  {
+    "objectID": "sujet81.html",
+    "href": "sujet81.html",
+    "title": "Sujet 81",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 81"
+    ]
+  },
+  {
+    "objectID": "sujet81.html#consignes",
+    "href": "sujet81.html#consignes",
+    "title": "Sujet 81",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 81"
+    ]
+  },
+  {
+    "objectID": "sujet81.html#questions",
+    "href": "sujet81.html#questions",
+    "title": "Sujet 81",
+    "section": "Questions :",
+    "text": "Questions :\n\nLa fréquence respiratoire peut-elle être prédite par la glycémie et l’albuminémie ?\nPour les chiennes pyo, existe-t-il une différence significative de pression artérielle entre les chiennes présentant une pathologie concomitante et les autres ?\nPour les chiennes sans pathologie concomitante, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d’un trouble digestif ?\nPour les chiennes dont l’état général n’est pas bon, peut-on considérer qu’il y a autant de chiennes pyo que de chiennes non pyo ?",
+    "crumbs": [
+      "Sujet 81"
+    ]
+  },
+  {
+    "objectID": "sujet82.html",
+    "href": "sujet82.html",
+    "title": "Sujet 82",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 82"
+    ]
+  },
+  {
+    "objectID": "sujet82.html#consignes",
+    "href": "sujet82.html#consignes",
+    "title": "Sujet 82",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 82"
+    ]
+  },
+  {
+    "objectID": "sujet82.html#questions",
+    "href": "sujet82.html#questions",
+    "title": "Sujet 82",
+    "section": "Questions :",
+    "text": "Questions :\n\nExiste-t-il une différence significative d’albuminémie selon le statut sirs ?\nExiste-t-il une corrélation significative entre la protéinémie totale et l’hématocrite ?\nLa répartition du statut sirs diffère-t-elle significativement selon la présence ou non d’un trouble digestif ?\nPeut-on considérer que 40 % des chiennes présentent une polyurie-polydipsie ? (attention à l’ordre des niveaux du facteur)",
+    "crumbs": [
+      "Sujet 82"
+    ]
+  },
+  {
+    "objectID": "sujet83.html",
+    "href": "sujet83.html",
+    "title": "Sujet 83",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 83"
+    ]
+  },
+  {
+    "objectID": "sujet83.html#consignes",
+    "href": "sujet83.html#consignes",
+    "title": "Sujet 83",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 83"
+    ]
+  },
+  {
+    "objectID": "sujet83.html#questions",
+    "href": "sujet83.html#questions",
+    "title": "Sujet 83",
+    "section": "Questions :",
+    "text": "Questions :\n\nLa glycémie peut-elle être prédite par la fréquence respiratoire, la quantité de plaquettes et la quantité de lymphocytes ?\nExiste-t-il une différence significative de la quantité de monocytes entre les chiennes présentant une pathologie concomitante et les autres ?\nPour les chiennes sans polyurie-polydipsie, la répartition du statut sirs diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?\nPeut-on considérer qu’il y a autant de chiennes avec que sans trouble digestif ?",
+    "crumbs": [
+      "Sujet 83"
+    ]
+  },
+  {
+    "objectID": "sujet84.html",
+    "href": "sujet84.html",
+    "title": "Sujet 84",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 84"
+    ]
+  },
+  {
+    "objectID": "sujet84.html#consignes",
+    "href": "sujet84.html#consignes",
+    "title": "Sujet 84",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 84"
+    ]
+  },
+  {
+    "objectID": "sujet84.html#questions",
+    "href": "sujet84.html#questions",
+    "title": "Sujet 84",
+    "section": "Questions :",
+    "text": "Questions :\n\nPour les chiennes pyo, existe-t-il une différence significative de pression artérielle selon l’état général ?\nExiste-t-il une corrélation significative entre les phosphatases alcalines et la quantité de plaquettes ?\nLa répartition de la présence d’un trouble digestif diffère-t-elle significativement selon la présence ou non d’une pathologie concomitante ?\nPour les chiennes présentant un trouble digestif, peut-on considérer que les cinq statuts des muqueuses sont représentés de façon équilibrée ?",
+    "crumbs": [
+      "Sujet 84"
+    ]
+  },
+  {
+    "objectID": "sujet85.html",
+    "href": "sujet85.html",
+    "title": "Sujet 85",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 85"
+    ]
+  },
+  {
+    "objectID": "sujet85.html#consignes",
+    "href": "sujet85.html#consignes",
+    "title": "Sujet 85",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 85"
+    ]
+  },
+  {
+    "objectID": "sujet85.html#questions",
+    "href": "sujet85.html#questions",
+    "title": "Sujet 85",
+    "section": "Questions :",
+    "text": "Questions :\n\nLe logarithme de la créatininémie peut-il être prédit par la pression artérielle, l’albuminémie et l’hématocrite ?\nExiste-t-il une différence significative de globulinémie entre les chiennes présentant un trouble digestif et les autres ?\nPour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d’un trouble digestif ?\nPour les chiennes pyo, peut-on considérer qu’il y a autant de chiennes avec que sans pathologie concomitante ?",
+    "crumbs": [
+      "Sujet 85"
+    ]
+  },
+  {
+    "objectID": "sujet86.html",
+    "href": "sujet86.html",
+    "title": "Sujet 86",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 86"
+    ]
+  },
+  {
+    "objectID": "sujet86.html#consignes",
+    "href": "sujet86.html#consignes",
+    "title": "Sujet 86",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 86"
+    ]
+  },
+  {
+    "objectID": "sujet86.html#questions",
+    "href": "sujet86.html#questions",
+    "title": "Sujet 86",
+    "section": "Questions :",
+    "text": "Questions :\n\nExiste-t-il une différence significative de protéinémie totale selon le statut sirs ?\nExiste-t-il une corrélation significative entre l’urémie et la créatininémie ?\nPour les chiennes pyo, la répartition de l’état général diffère-t-elle significativement selon la présence ou non d’une pathologie concomitante ?\nPour les chiennes pyo, peut-on considérer qu’il y a autant de chiennes avec que sans trouble digestif ?",
+    "crumbs": [
+      "Sujet 86"
+    ]
+  },
+  {
+    "objectID": "sujet87.html",
+    "href": "sujet87.html",
+    "title": "Sujet 87",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 87"
+    ]
+  },
+  {
+    "objectID": "sujet87.html#consignes",
+    "href": "sujet87.html#consignes",
+    "title": "Sujet 87",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 87"
+    ]
+  },
+  {
+    "objectID": "sujet87.html#questions",
+    "href": "sujet87.html#questions",
+    "title": "Sujet 87",
+    "section": "Questions :",
+    "text": "Questions :\n\nLa pression artérielle peut-elle être prédite par l’albuminémie et la quantité de plaquettes ?\nPour les chiennes pyo, existe-t-il une différence significative du logarithme de la créatininémie entre les chiennes présentant un trouble digestif et les autres ?\nLa répartition de la présence d’un trouble digestif diffère-t-elle significativement selon la présence ou non d’une polyurie-polydipsie ?\nPour les chiennes dont l’état général n’est pas bon, peut-on considérer qu’il y a autant de chiennes avec que sans pathologie concomitante ?",
+    "crumbs": [
+      "Sujet 87"
+    ]
+  },
+  {
+    "objectID": "sujet88.html",
+    "href": "sujet88.html",
+    "title": "Sujet 88",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 88"
+    ]
+  },
+  {
+    "objectID": "sujet88.html#consignes",
+    "href": "sujet88.html#consignes",
+    "title": "Sujet 88",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 88"
+    ]
+  },
+  {
+    "objectID": "sujet88.html#questions",
+    "href": "sujet88.html#questions",
+    "title": "Sujet 88",
+    "section": "Questions :",
+    "text": "Questions :\n\nExiste-t-il une différence significative de glycémie selon le statut sirs ?\nExiste-t-il une corrélation significative entre la quantité de granulocytes neutrophiles et la quantité de monocytes ?\nPour les chiennes présentant un trouble digestif, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d’une polyurie-polydipsie ?\nPour les chiennes présentant un sirs (quel que soit son stade), peut-on considérer que les quatre catégories d’état général sont représentées de façon équilibrée ?",
+    "crumbs": [
+      "Sujet 88"
+    ]
+  },
+  {
+    "objectID": "sujet89.html",
+    "href": "sujet89.html",
+    "title": "Sujet 89",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 89"
+    ]
+  },
+  {
+    "objectID": "sujet89.html#consignes",
+    "href": "sujet89.html#consignes",
+    "title": "Sujet 89",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 89"
+    ]
+  },
+  {
+    "objectID": "sujet89.html#questions",
+    "href": "sujet89.html#questions",
+    "title": "Sujet 89",
+    "section": "Questions :",
+    "text": "Questions :\n\nLa pression artérielle peut-elle être prédite par la quantité de lymphocytes, la quantité de plaquettes et l’albuminémie ?\nExiste-t-il une différence significative d’hématocrite entre les chiennes atteintes de pyométrie et les autres ?\nLa répartition de l’état général diffère-t-elle significativement selon la présence ou non d’un trouble digestif ?\nPeut-on considérer qu’il y a autant de chiennes avec que sans polyurie-polydipsie ?",
+    "crumbs": [
+      "Sujet 89"
+    ]
+  },
+  {
+    "objectID": "sujet90.html",
+    "href": "sujet90.html",
+    "title": "Sujet 90",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 90"
+    ]
+  },
+  {
+    "objectID": "sujet90.html#consignes",
+    "href": "sujet90.html#consignes",
+    "title": "Sujet 90",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 90"
+    ]
+  },
+  {
+    "objectID": "sujet90.html#questions",
+    "href": "sujet90.html#questions",
+    "title": "Sujet 90",
+    "section": "Questions :",
+    "text": "Questions :\n\nExiste-t-il une différence significative de la quantité de lymphocytes selon le statut sirs ?\nExiste-t-il une corrélation significative entre la globulinémie et la quantité de granulocytes neutrophiles ?\nPour les chiennes sans pathologie concomitante, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d’une polyurie-polydipsie ?\nPour les chiennes en bon état général, peut-on considérer qu’il y a autant de chiennes pyo que de chiennes non pyo ?",
+    "crumbs": [
+      "Sujet 90"
+    ]
+  },
+  {
+    "objectID": "sujet91.html",
+    "href": "sujet91.html",
+    "title": "Sujet 91",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 91"
+    ]
+  },
+  {
+    "objectID": "sujet91.html#consignes",
+    "href": "sujet91.html#consignes",
+    "title": "Sujet 91",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 91"
+    ]
+  },
+  {
+    "objectID": "sujet91.html#questions",
+    "href": "sujet91.html#questions",
+    "title": "Sujet 91",
+    "section": "Questions :",
+    "text": "Questions :\n\nL’albuminémie peut-elle être prédite par la pression artérielle, la quantité de lymphocytes, la globulinémie et l’hématocrite ?\nPour les chiennes pyo, existe-t-il une différence significative de fréquence respiratoire entre les chiennes présentant un trouble digestif et les autres ?\nLa répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d’une pathologie concomitante ?\nPour les chiennes pyo, peut-on considérer que les quatre catégories d’état général sont représentées de façon équilibrée ?",
+    "crumbs": [
+      "Sujet 91"
+    ]
+  },
+  {
+    "objectID": "sujet92.html",
+    "href": "sujet92.html",
+    "title": "Sujet 92",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 92"
+    ]
+  },
+  {
+    "objectID": "sujet92.html#consignes",
+    "href": "sujet92.html#consignes",
+    "title": "Sujet 92",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 92"
+    ]
+  },
+  {
+    "objectID": "sujet92.html#questions",
+    "href": "sujet92.html#questions",
+    "title": "Sujet 92",
+    "section": "Questions :",
+    "text": "Questions :\n\nExiste-t-il une différence significative du logarithme de la quantité de granulocytes neutrophiles selon le statut des muqueuses ?\nExiste-t-il une corrélation significative entre l’hématocrite et la glycémie ?\nLa répartition de l’état général diffère-t-elle significativement selon la présence ou non d’une polyurie-polydipsie ?\nPeut-on considérer que les statuts sirs (absence, sepsis simple, sepsis sévère, choc septique) se répartissent respectivement selon les proportions 30 %, 30 %, 25 % et 15 % ?",
+    "crumbs": [
+      "Sujet 92"
+    ]
+  },
+  {
+    "objectID": "sujet93.html",
+    "href": "sujet93.html",
+    "title": "Sujet 93",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 93"
+    ]
+  },
+  {
+    "objectID": "sujet93.html#consignes",
+    "href": "sujet93.html#consignes",
+    "title": "Sujet 93",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 93"
+    ]
+  },
+  {
+    "objectID": "sujet93.html#questions",
+    "href": "sujet93.html#questions",
+    "title": "Sujet 93",
+    "section": "Questions :",
+    "text": "Questions :\n\nLa quantité de lymphocytes peut-elle être prédite par la pression artérielle et la quantité de plaquettes ?\nExiste-t-il une différence significative du logarithme des phosphatases alcalines entre les chiennes atteintes de pyométrie et les autres ?\nPour les chiennes sans pathologie concomitante, la répartition de la présence d’un trouble digestif diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?\nPour les chiennes en sepsis sévère, peut-on considérer que les quatre catégories d’état général sont représentées de façon équilibrée ?",
+    "crumbs": [
+      "Sujet 93"
+    ]
+  },
+  {
+    "objectID": "sujet94.html",
+    "href": "sujet94.html",
+    "title": "Sujet 94",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 94"
+    ]
+  },
+  {
+    "objectID": "sujet94.html#consignes",
+    "href": "sujet94.html#consignes",
+    "title": "Sujet 94",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 94"
+    ]
+  },
+  {
+    "objectID": "sujet94.html#questions",
+    "href": "sujet94.html#questions",
+    "title": "Sujet 94",
+    "section": "Questions :",
+    "text": "Questions :\n\nPour les chiennes pyo, existe-t-il une différence significative de protéinémie totale selon l’état général ?\nExiste-t-il une corrélation significative entre l’albuminémie et les phosphatases alcalines ?\nPour les chiennes pyo, la répartition de la présence d’un trouble digestif diffère-t-elle significativement selon la présence ou non d’une pathologie concomitante ?\nPour les chiennes en décubitus, peut-on considérer que les quatre statuts sirs sont représentés de façon équilibrée ?",
+    "crumbs": [
+      "Sujet 94"
+    ]
+  },
+  {
+    "objectID": "sujet95.html",
+    "href": "sujet95.html",
+    "title": "Sujet 95",
+    "section": "",
+    "text": "Consignes :",
+    "crumbs": [
+      "Sujet 95"
+    ]
+  },
+  {
+    "objectID": "sujet95.html#consignes",
+    "href": "sujet95.html#consignes",
+    "title": "Sujet 95",
+    "section": "",
+    "text": "Toutes les questions sont indépendantes.\nPour chacune d’elles, une analyse descriptive et une illustration graphique est demandée.\nLe choix du test statistique sera justifié.",
+    "crumbs": [
+      "Sujet 95"
+    ]
+  },
+  {
+    "objectID": "sujet95.html#questions",
+    "href": "sujet95.html#questions",
+    "title": "Sujet 95",
+    "section": "Questions :",
+    "text": "Questions :\n\nLa fréquence respiratoire peut-elle être prédite par la pression artérielle, la quantité de plaquettes et la glycémie ?\nPour les chiennes pyo, existe-t-il une différence significative du logarithme de l’urémie entre les chiennes présentant un trouble digestif et les autres ?\nLa répartition de la présence d’une polyurie-polydipsie diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?\nPour les chiennes en bon état général, peut-on considérer que les cinq statuts des muqueuses sont représentés de façon équilibrée ?",
+    "crumbs": [
+      "Sujet 95"
+    ]
+  }
+]

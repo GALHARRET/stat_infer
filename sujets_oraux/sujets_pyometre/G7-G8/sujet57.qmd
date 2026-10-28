@@ -1,0 +1,36 @@
+# Sujet 57 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(fr~pa+plaquette+glucose,data=donnees)
+summary(mod)
+
+t.test(log(creat)~pathologie_concomitante,data=donnees)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$tbdigestif,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$pupd)
+obs
+chisq.test(obs,p=c(0.6,0.4))
+```
+
+1. La fréquence respiratoire peut-elle être prédite par la pression artérielle, la quantité de plaquettes et la glycémie ?
+
+2. Existe-t-il une différence significative du logarithme de la créatininémie entre les chiennes présentant une pathologie concomitante et les autres ?
+
+3. Pour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Peut-on considérer que 40 % des chiennes présentent une polyurie-polydipsie ? (attention à l'ordre des niveaux du facteur)

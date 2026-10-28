@@ -1,0 +1,36 @@
+# Sujet 53 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(uree)~pa+ht,data=donnees)
+summary(mod)
+
+t.test(lymphocyte~pathologie_concomitante,data=donnees)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$tbdigestif,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$sirs=="sepsis severe","pupd"]))
+obs
+chisq.test(obs)
+```
+
+1. Le logarithme de l'urémie peut-il être prédit par la pression artérielle et l'hématocrite ?
+
+2. Existe-t-il une différence significative de la quantité de lymphocytes entre les chiennes présentant une pathologie concomitante et les autres ?
+
+3. Pour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes en sepsis sévère, peut-on considérer qu'il y a autant de chiennes avec que sans polyurie-polydipsie ?

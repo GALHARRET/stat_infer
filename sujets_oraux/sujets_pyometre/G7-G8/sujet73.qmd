@@ -1,0 +1,35 @@
+# Sujet 73 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(pa~lymphocyte+plaquette+albumine,data=donnees)
+summary(mod)
+
+t.test(log(creat)~tbdigestif,data=donnees)
+
+obs<-table(donnees$pathologie_concomitante,donnees$pupd)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$tbdigestif)
+obs
+chisq.test(obs)
+```
+
+1. La pression artérielle peut-elle être prédite par la quantité de lymphocytes, la quantité de plaquettes et l'albuminémie ?
+
+2. Existe-t-il une différence significative du logarithme de la créatininémie entre les chiennes présentant un trouble digestif et les autres ?
+
+3. La répartition de la présence d'une polyurie-polydipsie diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Peut-on considérer qu'il y a autant de chiennes avec que sans trouble digestif ?

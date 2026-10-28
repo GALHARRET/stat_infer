@@ -1,0 +1,35 @@
+# Sujet 31 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(ht~globuline+albumine,data=donnees)
+summary(mod)
+
+t.test(log(creat)~tbdigestif,data=donnees[donnees$type=="pyo",])
+
+obs<-table(donnees$pathologie_concomitante,donnees$eg)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$muqueuse=="RH","pupd"]))
+obs
+chisq.test(obs)
+```
+
+1. L'hématocrite peut-il être prédit par la globulinémie et l'albuminémie ?
+
+2. Pour les chiennes pyo, existe-t-il une différence significative du logarithme de la créatininémie entre les chiennes présentant un trouble digestif et les autres ?
+
+3. La répartition de l'état général diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Pour les chiennes ayant des muqueuses roses et humides, peut-on considérer qu'il y a autant de chiennes avec que sans polyurie-polydipsie ?

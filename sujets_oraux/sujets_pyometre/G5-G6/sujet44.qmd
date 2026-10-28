@@ -1,0 +1,36 @@
+# Sujet 44 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(plaquette~eg,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$globuline,donnees$glucose)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$pupd,sub$muqueuse)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$muqueuse=="RH","type"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative de la quantité de plaquettes selon l'état général ?
+
+2. Existe-t-il une corrélation significative entre la globulinémie et la glycémie ?
+
+3. Pour les chiennes pyo, la répartition du statut des muqueuses diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Pour les chiennes ayant des muqueuses roses et humides, peut-on considérer qu'il y a autant de chiennes pyo que de chiennes non pyo ?

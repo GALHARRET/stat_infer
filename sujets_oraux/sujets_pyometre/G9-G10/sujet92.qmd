@@ -1,0 +1,35 @@
+# Sujet 92 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(gn)~muqueuse,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$ht,donnees$glucose)
+
+obs<-table(donnees$pupd,donnees$eg)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$sirs)
+obs
+chisq.test(obs,p=c(0.3,0.3,0.25,0.15))
+```
+
+1. Existe-t-il une différence significative du logarithme de la quantité de granulocytes neutrophiles selon le statut des muqueuses ?
+
+2. Existe-t-il une corrélation significative entre l'hématocrite et la glycémie ?
+
+3. La répartition de l'état général diffère-t-elle significativement selon la présence ou non d'une polyurie-polydipsie ?
+
+4. Peut-on considérer que les statuts sirs (absence, sepsis simple, sepsis sévère, choc septique) se répartissent respectivement selon les proportions 30 %, 30 %, 25 % et 15 % ?

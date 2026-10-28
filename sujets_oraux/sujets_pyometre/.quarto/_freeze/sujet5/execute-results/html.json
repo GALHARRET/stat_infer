@@ -1,0 +1,17 @@
+{
+  "hash": "1e5c2d8cbd8db3ce938f079232426b5e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Sujet 5 {.unnumbered}\n\n## Consignes :\n\n- Toutes les questions sont indépendantes.\n\n- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. \n\n- Le choix du test statistique sera justifié.\n\n## Questions :\n\n::: {.cell}\n\n:::\n\n\n1. Existe-t-il une différence significative de la quantité de globules blancs selon le statut sirs ?\n\n2. Existe-t-il un lien significatif entre la quantité de globules blancs et l'urémie ?\n\n3. Existe-t-il un lien significatif entre la quantité de plaquettes et la pyométrie de la chienne ?\n\n4. La répartition du statut pyométrique diffère-t-elle significativement selon la présence ou pas d'une pathologie concomitante ? \n\n ",
+    "supporting": [
+      "sujet5_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

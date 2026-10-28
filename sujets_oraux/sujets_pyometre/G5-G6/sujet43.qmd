@@ -1,0 +1,35 @@
+# Sujet 43 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(ht~albumine+uree+globuline,data=donnees)
+summary(mod)
+
+t.test(log(gn)~pathologie_concomitante,data=donnees)
+
+obs<-table(donnees$type,donnees$pupd)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$tbdigestif)
+obs
+chisq.test(obs)
+```
+
+1. L'hématocrite peut-il être prédit par l'albuminémie, l'urémie et la globulinémie ?
+
+2. Existe-t-il une différence significative du logarithme de la quantité de granulocytes neutrophiles entre les chiennes présentant une pathologie concomitante et les autres ?
+
+3. La répartition de la présence d'une polyurie-polydipsie diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Peut-on considérer qu'il y a autant de chiennes avec que sans trouble digestif ?

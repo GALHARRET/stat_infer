@@ -1,0 +1,36 @@
+# Sujet 94 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(proteinetotale~eg,data=droplevels(donnees[donnees$type=="pyo",]))
+car::Anova(mod)
+
+cor.test(donnees$albumine,donnees$pal,method="spearman",exact=FALSE)
+
+sub<-droplevels(donnees[donnees$type=="pyo",])
+obs<-table(sub$pathologie_concomitante,sub$tbdigestif)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$eg=="decubitus","sirs"]))
+obs
+chisq.test(obs)
+```
+
+1. Pour les chiennes pyo, existe-t-il une différence significative de protéinémie totale selon l'état général ?
+
+2. Existe-t-il une corrélation significative entre l'albuminémie et les phosphatases alcalines ?
+
+3. Pour les chiennes pyo, la répartition de la présence d'un trouble digestif diffère-t-elle significativement selon la présence ou non d'une pathologie concomitante ?
+
+4. Pour les chiennes en décubitus, peut-on considérer que les quatre statuts sirs sont représentés de façon équilibrée ?

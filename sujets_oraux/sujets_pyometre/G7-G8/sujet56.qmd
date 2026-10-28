@@ -1,0 +1,35 @@
+# Sujet 56 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(log(alat)~eg,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$proteinetotale,donnees$glucose)
+
+obs<-table(donnees$tbdigestif,donnees$sirs)
+obs
+chisq.test(obs)
+
+obs<-table(donnees$pathologie_concomitante)
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative du logarithme de l'ALAT selon l'état général ?
+
+2. Existe-t-il une corrélation significative entre la protéinémie totale et la glycémie ?
+
+3. La répartition du statut sirs diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Peut-on considérer qu'il y a autant de chiennes avec que sans pathologie concomitante ?

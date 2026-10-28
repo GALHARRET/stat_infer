@@ -1,0 +1,35 @@
+# Sujet 40 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(lymphocyte~eg,data=donnees)
+car::Anova(mod)
+
+cor.test(donnees$pal,donnees$gn,method="spearman",exact=FALSE)
+
+obs<-table(donnees$tbdigestif,donnees$pupd)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$pupd=="presence","pathologie_concomitante"]))
+obs
+chisq.test(obs)
+```
+
+1. Existe-t-il une différence significative de la quantité de lymphocytes selon l'état général ?
+
+2. Existe-t-il une corrélation significative entre les phosphatases alcalines et la quantité de granulocytes neutrophiles ?
+
+3. La répartition de la présence d'une polyurie-polydipsie diffère-t-elle significativement selon la présence ou non d'un trouble digestif ?
+
+4. Pour les chiennes présentant une polyurie-polydipsie, peut-on considérer qu'il y a autant de chiennes avec que sans pathologie concomitante ?

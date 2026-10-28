@@ -1,0 +1,36 @@
+# Sujet 93 {.unnumbered}
+
+## Consignes :
+
+- Toutes les questions sont indépendantes.
+
+- Pour chacune d'elles, une analyse descriptive et une illustration graphique est demandée. 
+
+- Le choix du test statistique sera justifié.
+
+## Questions :
+```{r echo=F, eval=F}
+load("pyometre_simule.RData")
+
+mod<-lm(lymphocyte~pa+plaquette,data=donnees)
+summary(mod)
+
+t.test(log(pal)~type,data=donnees)
+
+sub<-droplevels(donnees[donnees$pathologie_concomitante=="non",])
+obs<-table(sub$type,sub$tbdigestif)
+obs
+chisq.test(obs)
+
+obs<-table(droplevels(donnees[donnees$sirs=="sepsis severe","eg"]))
+obs
+chisq.test(obs)
+```
+
+1. La quantité de lymphocytes peut-elle être prédite par la pression artérielle et la quantité de plaquettes ?
+
+2. Existe-t-il une différence significative du logarithme des phosphatases alcalines entre les chiennes atteintes de pyométrie et les autres ?
+
+3. Pour les chiennes sans pathologie concomitante, la répartition de la présence d'un trouble digestif diffère-t-elle significativement selon que la chienne est atteinte ou non de pyométrie ?
+
+4. Pour les chiennes en sepsis sévère, peut-on considérer que les quatre catégories d'état général sont représentées de façon équilibrée ?
